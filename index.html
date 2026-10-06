@@ -3,1183 +3,768 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Curly Witch</title>
-
-<meta name="description"
-content="Curly Witch. Master of Mathematics. Erotic artist. Nature feeds me. I turn it into desire.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-
-:root {
-    --night: #0d1510;
-    --forest: #17251b;
-    --deep: #101a13;
-    --paper: #eee9de;
-    --ink: #20251f;
-    --blue: #7e8cab;
-    --mist: #aeb9a8;
+:root{
+  --night:#07100d;
+  --forest:#10251d;
+  --mist:#b9c8bf;
+  --moon:#e7e2d1;
+  --paper:#e8e2d5;
+  --ink:#16211b;
+  --blue:#9ca8c8;
 }
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-
-html {
-    scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
-
-body {
-    background: var(--night);
-    color: var(--paper);
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
+body{
+  background:var(--night);
+  color:white;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
 }
-
-a {
-    color: inherit;
-    text-decoration: none;
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  position:relative;
+  height:100svh;
+  min-height:650px;
+  overflow:hidden;
+  background:#07100d;
 }
-
-
-/* ==================================================
-   PAGE ONE — THE FOREST
-================================================== */
-
-.forest {
-    min-height: 100svh;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 70% 20%,
-            rgba(105,125,105,.18),
-            transparent 25%
-        ),
-        linear-gradient(
-            180deg,
-            #101913 0%,
-            #162219 48%,
-            #0a100c 100%
-        );
+/* Your photograph */
+.photo{
+  position:absolute;
+  inset:-5%;
+  z-index:1;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(4,11,8,.72) 0%,
+      rgba(4,11,8,.28) 30%,
+      rgba(4,11,8,.05) 65%,
+      rgba(4,11,8,.40) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3,9,7,.42) 0%,
+      transparent 30%,
+      rgba(3,9,7,.58) 100%
+    ),
+    url("1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg");
+  background-size:cover;
+  background-position:center center;
+  transform:
+    translate3d(
+      var(--mouse-x,0px),
+      var(--mouse-y,0px),
+      0
+    )
+    scale(1.055);
+  animation:slowBreath 18s ease-in-out infinite alternate;
+  filter:
+    saturate(.84)
+    contrast(1.04)
+    brightness(.82);
 }
-
-
-/* MOON */
-
-.moon {
-    position: absolute;
-
-    width: 125px;
-    height: 125px;
-
-    right: 15vw;
-    top: 11vh;
-
-    border-radius: 50%;
-
-    background: #e8e4d5;
-
-    box-shadow:
-        0 0 35px rgba(232,228,213,.18),
-        0 0 110px rgba(232,228,213,.07);
-
-    opacity: .9;
+@keyframes slowBreath{
+  from{
+    transform:
+      translate3d(
+        var(--mouse-x,0px),
+        var(--mouse-y,0px),
+        0
+      )
+      scale(1.055);
+  }
+  to{
+    transform:
+      translate3d(
+        calc(var(--mouse-x,0px) * .6),
+        calc(var(--mouse-y,0px) * .6),
+        0
+      )
+      scale(1.09);
+  }
 }
-
-.moon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 110px;
-    height: 110px;
-
-    left: 24px;
-    top: -8px;
-
-    border-radius: 50%;
-
-    background: #101913;
+/* =========================================================
+   MOONLIGHT
+========================================================= */
+.moonlight{
+  position:absolute;
+  z-index:3;
+  width:42vw;
+  height:42vw;
+  max-width:650px;
+  max-height:650px;
+  right:-12vw;
+  top:-15vw;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(232,228,208,.25) 0%,
+      rgba(190,201,198,.11) 30%,
+      rgba(130,151,151,.035) 52%,
+      transparent 70%
+    );
+  filter:blur(12px);
+  pointer-events:none;
+  animation:moonPulse 9s ease-in-out infinite alternate;
 }
-
-
-/* MIST */
-
-.mist {
-    position: absolute;
-
-    left: -10%;
-    bottom: 14%;
-
-    width: 120%;
-    height: 24%;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(174,185,168,.15),
-            transparent 65%
-        );
-
-    filter: blur(20px);
-
-    animation:
-        mistMove 18s ease-in-out infinite alternate;
+@keyframes moonPulse{
+  from{opacity:.65; transform:scale(.95);}
+  to{opacity:1; transform:scale(1.05);}
 }
-
-.mist.two {
-    bottom: 24%;
-    opacity: .45;
-    animation-duration: 26s;
-    animation-direction: alternate-reverse;
+/* =========================================================
+   FOREGROUND BRANCHES
+   Realistic-looking atmospheric shadows, not cartoon trees.
+========================================================= */
+.branches{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  pointer-events:none;
+  overflow:hidden;
 }
-
-@keyframes mistMove {
-
-    from {
-        transform: translateX(-6%);
-    }
-
-    to {
-        transform: translateX(8%);
-    }
-
+.branch{
+  position:absolute;
+  width:48vw;
+  height:1px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(1,5,3,.95),
+      rgba(1,5,3,.65),
+      transparent
+    );
+  transform-origin:left center;
+  filter:blur(.4px);
 }
-
-
-/* TREES */
-
-.trees {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
+.branch::before,
+.branch::after{
+  content:"";
+  position:absolute;
+  height:1px;
+  background:inherit;
+  transform-origin:left center;
 }
-
-.tree {
-    position: absolute;
-
-    bottom: -4px;
-
-    width: 0;
-    height: 0;
-
-    border-left: 75px solid transparent;
-    border-right: 75px solid transparent;
-    border-bottom: 215px solid #0d1811;
-
-    transform-origin: bottom center;
-
-    animation:
-        treeMove 8s ease-in-out infinite alternate;
+.branch::before{
+  width:45%;
+  left:34%;
+  top:-20px;
+  transform:rotate(-18deg);
 }
-
-.tree::before,
-.tree::after {
-    content: "";
-
-    position: absolute;
-
-    left: -60px;
-    bottom: 50px;
-
-    width: 0;
-    height: 0;
-
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 170px solid #0d1811;
+.branch::after{
+  width:38%;
+  left:50%;
+  top:18px;
+  transform:rotate(22deg);
 }
-
-.tree::after {
-
-    left: -48px;
-    bottom: 105px;
-
-    border-left-width: 48px;
-    border-right-width: 48px;
-    border-bottom-width: 135px;
+.b1{
+  top:11%;
+  left:-5%;
+  transform:rotate(18deg);
+  opacity:.75;
 }
-
-
-.tree:nth-child(1) {
-    left: 2%;
-    transform: scale(.75);
-    animation-delay: -2s;
+.b2{
+  top:20%;
+  right:-18%;
+  transform:rotate(160deg);
+  opacity:.45;
 }
-
-.tree:nth-child(2) {
-    left: 16%;
-    transform: scale(1.15);
-    animation-delay: -5s;
+.b3{
+  bottom:7%;
+  left:-10%;
+  transform:rotate(-8deg);
+  opacity:.5;
 }
-
-.tree:nth-child(3) {
-    left: 33%;
-    transform: scale(.7);
-    animation-delay: -1s;
+/* =========================================================
+   FOG
+========================================================= */
+.fog{
+  position:absolute;
+  z-index:5;
+  left:-20%;
+  width:140%;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(193,207,202,.19) 0%,
+      rgba(193,207,202,.08) 32%,
+      transparent 70%
+    );
+  filter:blur(18px);
 }
-
-.tree:nth-child(4) {
-    left: 51%;
-    transform: scale(1.25);
-    animation-delay: -4s;
+.fog.one{
+  height:32%;
+  bottom:9%;
+  animation:fogOne 22s ease-in-out infinite alternate;
 }
-
-.tree:nth-child(5) {
-    left: 70%;
-    transform: scale(.85);
-    animation-delay: -3s;
+.fog.two{
+  height:25%;
+  bottom:25%;
+  opacity:.58;
+  animation:fogTwo 30s ease-in-out infinite alternate;
 }
-
-.tree:nth-child(6) {
-    left: 88%;
-    transform: scale(1.2);
-    animation-delay: -6s;
+.fog.three{
+  height:20%;
+  bottom:2%;
+  opacity:.42;
+  filter:blur(28px);
+  animation:fogThree 38s ease-in-out infinite alternate;
 }
-
-@keyframes treeMove {
-
-    from {
-        rotate: -1deg;
-    }
-
-    to {
-        rotate: 1deg;
-    }
-
+@keyframes fogOne{
+  0%{
+    transform:translateX(-8%) scale(1.1);
+  }
+  100%{
+    transform:translateX(10%) scale(1.25);
+  }
 }
-
-
-/* FIREFLIES */
-
-.fireflies span {
-
-    position: absolute;
-
-    width: 3px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background: #d9e2b8;
-
-    box-shadow:
-        0 0 10px 3px rgba(217,226,184,.28);
-
-    animation:
-        firefly 6s ease-in-out infinite,
-        glow 2.5s ease-in-out infinite alternate;
+@keyframes fogTwo{
+  0%{
+    transform:translateX(9%) scale(1.2);
+  }
+  100%{
+    transform:translateX(-12%) scale(1.05);
+  }
 }
-
-.fireflies span:nth-child(1) {
-    left: 20%;
-    top: 48%;
-    animation-delay: -1s;
+@keyframes fogThree{
+  0%{
+    transform:translateX(-12%) scale(1.15);
+  }
+  100%{
+    transform:translateX(15%) scale(1.3);
+  }
 }
-
-.fireflies span:nth-child(2) {
-    left: 29%;
-    top: 62%;
-    animation-delay: -4s;
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+.particles{
+  position:absolute;
+  inset:0;
+  z-index:7;
+  pointer-events:none;
 }
-
-.fireflies span:nth-child(3) {
-    left: 41%;
-    top: 42%;
-    animation-delay: -2s;
+.particle{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:rgba(218,224,205,.72);
+  box-shadow:
+    0 0 7px rgba(218,224,205,.5);
+  animation:
+    floatUp linear infinite,
+    shimmer ease-in-out infinite alternate;
 }
-
-.fireflies span:nth-child(4) {
-    left: 57%;
-    top: 55%;
-    animation-delay: -5s;
+@keyframes floatUp{
+  from{
+    transform:translate3d(0,30px,0);
+  }
+  to{
+    transform:translate3d(
+      var(--drift),
+      -110px,
+      0
+    );
+  }
 }
-
-.fireflies span:nth-child(5) {
-    left: 68%;
-    top: 40%;
-    animation-delay: -3s;
+@keyframes shimmer{
+  from{opacity:.15;}
+  to{opacity:.9;}
 }
-
-.fireflies span:nth-child(6) {
-    left: 78%;
-    top: 63%;
-    animation-delay: -1.5s;
+/* individual particles */
+.p1{left:14%;bottom:10%;--drift:20px;animation-duration:17s,3s;}
+.p2{left:22%;bottom:22%;--drift:-15px;animation-duration:22s,4s;}
+.p3{left:37%;bottom:8%;--drift:28px;animation-duration:19s,3.5s;}
+.p4{left:48%;bottom:15%;--drift:-22px;animation-duration:25s,4.5s;}
+.p5{left:61%;bottom:5%;--drift:18px;animation-duration:20s,3s;}
+.p6{left:74%;bottom:18%;--drift:-28px;animation-duration:28s,5s;}
+.p7{left:83%;bottom:9%;--drift:24px;animation-duration:18s,4s;}
+.p8{left:31%;bottom:35%;--drift:-18px;animation-duration:26s,5s;}
+.p9{left:68%;bottom:31%;--drift:16px;animation-duration:23s,4s;}
+/* =========================================================
+   DARK VIGNETTE
+========================================================= */
+.vignette{
+  position:absolute;
+  inset:0;
+  z-index:9;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 35%,
+      rgba(2,7,5,.18) 62%,
+      rgba(1,5,3,.72) 100%
+    );
 }
-
-.fireflies span:nth-child(7) {
-    left: 84%;
-    top: 47%;
-    animation-delay: -4.5s;
+/* =========================================================
+   GRAIN
+========================================================= */
+.grain{
+  position:absolute;
+  inset:-50%;
+  z-index:20;
+  pointer-events:none;
+  opacity:.065;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  animation:grain .18s steps(2) infinite;
 }
-
-@keyframes firefly {
-
-    0%, 100% {
-        transform: translate(0,0);
-    }
-
-    50% {
-        transform: translate(18px,-25px);
-    }
-
+@keyframes grain{
+  0%{transform:translate(0,0);}
+  25%{transform:translate(-2%,1%);}
+  50%{transform:translate(1%,-2%);}
+  75%{transform:translate(2%,2%);}
+  100%{transform:translate(-1%,-1%);}
 }
-
-@keyframes glow {
-
-    from {
-        opacity: .25;
-    }
-
-    to {
-        opacity: 1;
-    }
-
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+.hero-content{
+  position:absolute;
+  z-index:30;
+  left:8vw;
+  bottom:13vh;
+  max-width:680px;
+  transform:
+    translate3d(
+      calc(var(--content-x,0px)),
+      calc(var(--content-y,0px)),
+      0
+    );
 }
-
-
-/* HERO CONTENT */
-
-.hero-content {
-
-    position: relative;
-    z-index: 10;
-
-    min-height: 100svh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    padding:
-        8vw
-        8vw
-        9vh;
+.kicker{
+  font-family:"IM Fell English",serif;
+  font-style:italic;
+  font-size:clamp(15px,1.5vw,21px);
+  color:rgba(232,226,213,.82);
+  margin-bottom:12px;
+  letter-spacing:.04em;
 }
-
-.name {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size:
-        clamp(76px, 13vw, 175px);
-
-    font-weight: 300;
-
-    line-height: .72;
-
-    letter-spacing: -.045em;
+h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(64px,10vw,145px);
+  font-weight:500;
+  line-height:.78;
+  letter-spacing:-.055em;
+  color:#f0ece1;
+  text-shadow:
+    0 4px 35px rgba(0,0,0,.4);
+  margin-left:-.07em;
 }
-
-.role {
-
-    margin-top: 34px;
-
-    font-family: "IM Fell English", serif;
-
-    font-style: italic;
-
-    font-size:
-        clamp(23px, 3vw, 36px);
+.subtitle{
+  margin-top:28px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(21px,2.4vw,34px);
+  line-height:1.15;
+  color:#e8e2d6;
+  max-width:530px;
 }
-
-.description {
-
-    margin-top: 18px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size:
-        clamp(23px, 3vw, 34px);
-
-    line-height: 1.05;
-
-    max-width: 500px;
+.statement{
+  margin-top:22px;
+  font-family:"IM Fell English",serif;
+  font-style:italic;
+  font-size:clamp(19px,2vw,27px);
+  line-height:1.3;
+  color:rgba(235,231,219,.84);
+  max-width:470px;
 }
-
-.cta {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    width: fit-content;
-
-    margin-top: 38px;
-
-    padding-bottom: 8px;
-
-    border-bottom:
-        1px solid rgba(238,233,222,.75);
-
-    font-size: 11px;
-
-    letter-spacing: .2em;
-
-    text-transform: uppercase;
-
-    transition: .3s ease;
+/* =========================================================
+   CTA
+========================================================= */
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  margin-top:38px;
+  padding:13px 0;
+  color:#eee9dd;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(238,233,221,.48);
+  transition:
+    gap .4s ease,
+    border-color .4s ease,
+    color .4s ease;
 }
-
-.cta:hover {
-
-    letter-spacing: .28em;
-
+.cta:hover{
+  gap:22px;
+  border-color:#eee9dd;
 }
-
-.cta span {
-
-    font-family:
-        "IM Fell English", serif;
-
-    font-size: 20px;
+/* =========================================================
+   SCROLL
+========================================================= */
+.scroll{
+  position:absolute;
+  z-index:30;
+  right:5vw;
+  bottom:6vh;
+  writing-mode:vertical-rl;
+  font-size:9px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(235,231,219,.58);
 }
-
-
-/* ==================================================
-   PAGE TWO — THE WITCH
-================================================== */
-
-.witch {
-
-    min-height: 100svh;
-
-    background: var(--paper);
-
-    color: var(--ink);
-
-    padding:
-        45px
-        8vw
-        100px;
+/* =========================================================
+   SECOND SECTION
+========================================================= */
+.witch{
+  position:relative;
+  min-height:100svh;
+  padding:14vh 9vw;
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(124,140,154,.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #e8e2d6,
+      #d9d4c7
+    );
+  color:var(--ink);
 }
-
-
-/* NAV */
-
-.nav {
-
-    display: flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    font-size: 11px;
-
-    letter-spacing: .16em;
-
-    text-transform:
-        uppercase;
+.witch-inner{
+  max-width:950px;
+  margin:auto;
 }
-
-.nav a:last-child {
-
-    border-bottom:
-        1px solid var(--ink);
-
-    padding-bottom: 5px;
+.witch-label{
+  font-family:"IM Fell English",serif;
+  font-style:italic;
+  color:#53635a;
+  font-size:18px;
+  margin-bottom:20px;
 }
-
-
-/* INTRO */
-
-.intro {
-
-    padding:
-        15vw 0
-        11vw;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 10vw;
-
-    align-items:
-        end;
+.witch h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
+  font-size:clamp(58px,9vw,125px);
+  letter-spacing:-.055em;
+  line-height:.8;
+  margin-bottom:55px;
 }
-
-.intro h2 {
-
-    font-family:
-        "Cormorant Garamond", serif;
-
-    font-size:
-        clamp(80px, 12vw, 160px);
-
-    line-height: .7;
-
-    font-weight: 300;
-
-    letter-spacing: -.05em;
+.intro{
+  max-width:670px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(25px,3vw,40px);
+  line-height:1.18;
 }
-
-.intro h2 em {
-
-    font-family:
-        "IM Fell English", serif;
+.beliefs{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:65px 80px;
+  margin-top:100px;
 }
-
-.intro-text {
-
-    font-family:
-        "Cormorant Garamond", serif;
-
-    font-size: 28px;
-
-    line-height: 1.2;
-
-    max-width: 470px;
+.belief-number{
+  font-family:"IM Fell English",serif;
+  font-style:italic;
+  color:#6c7d73;
+  margin-bottom:12px;
 }
-
-.intro-text p + p {
-
-    margin-top: 28px;
+.belief h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:31px;
+  font-weight:500;
+  margin-bottom:10px;
 }
-
-
-/* GRIMOIRE */
-
-.grimoire {
-
-    border-top:
-        1px solid rgba(32,37,31,.25);
-
-    border-bottom:
-        1px solid rgba(32,37,31,.25);
-
-    padding:
-        70px 0;
+.belief p{
+  font-size:14px;
+  line-height:1.7;
+  max-width:330px;
+  color:#465149;
 }
-
-.grimoire-title {
-
-    font-family:
-        "IM Fell English", serif;
-
-    font-style:
-        italic;
-
-    font-size: 22px;
-
-    color:
-        var(--blue);
-
-    margin-bottom: 45px;
+.final-line{
+  margin-top:120px;
+  max-width:700px;
+  font-family:"IM Fell English",serif;
+  font-style:italic;
+  font-size:clamp(27px,3vw,43px);
+  line-height:1.2;
 }
-
-.entry {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        180px 1fr;
-
-    gap: 40px;
-
-    padding:
-        35px 0;
-
-    border-top:
-        1px solid rgba(32,37,31,.15);
+.witch-cta{
+  margin-top:55px;
 }
-
-.entry:first-of-type {
-
-    border-top: 0;
-}
-
-.entry-number {
-
-    font-family:
-        "IM Fell English", serif;
-
-    font-size: 18px;
-
-    color:
-        var(--blue);
-}
-
-.entry h3 {
-
-    font-family:
-        "Cormorant Garamond", serif;
-
-    font-size: 52px;
-
-    font-weight: 400;
-
-    line-height: .9;
-
-    margin-bottom: 22px;
-}
-
-.entry p {
-
-    max-width: 620px;
-
-    font-family:
-        "Cormorant Garamond", serif;
-
-    font-size: 23px;
-
-    line-height: 1.3;
-
-    color: #555a52;
-}
-
-
-/* QUOTE */
-
-.quote {
-
-    padding:
-        15vw 0;
-
-    text-align:
-        center;
-}
-
-.quote-symbol {
-
-    font-family:
-        "IM Fell English", serif;
-
-    color:
-        var(--blue);
-
-    font-size: 35px;
-
-    margin-bottom: 30px;
-}
-
-.quote h2 {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    font-family:
-        "Cormorant Garamond", serif;
-
-    font-size:
-        clamp(50px, 7vw, 95px);
-
-    font-weight: 300;
-
-    line-height: .87;
-}
-
-.quote h2 em {
-
-    font-family:
-        "IM Fell English", serif;
-}
-
-.back {
-
-    display:
-        block;
-
-    width: fit-content;
-
-    margin:
-        0 auto;
-
-    font-size: 11px;
-
-    letter-spacing: .17em;
-
-    text-transform:
-        uppercase;
-
-    border-bottom:
-        1px solid var(--ink);
-
-    padding-bottom: 8px;
-}
-
-
-/* FOOTER */
-
-footer {
-
-    background:
-        var(--forest);
-
-    color:
-        rgba(238,233,222,.45);
-
-    padding:
-        25px 8vw;
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    font-size: 10px;
-
-    letter-spacing: .13em;
-
-    text-transform:
-        uppercase;
-}
-
-
-/* ==================================================
+/* =========================================================
    MOBILE
-================================================== */
-
-@media (max-width: 700px) {
-
-    .moon {
-
-        width: 85px;
-        height: 85px;
-
-        right: 13vw;
-        top: 10vh;
-    }
-
-    .moon::after {
-
-        width: 76px;
-        height: 76px;
-    }
-
-    .hero-content {
-
-        padding:
-            8vw
-            7vw
-            8vh;
-    }
-
-    .name {
-
-        font-size: 78px;
-    }
-
-    .tree {
-
-        border-left-width: 55px;
-        border-right-width: 55px;
-        border-bottom-width: 180px;
-    }
-
-    .witch {
-
-        padding:
-            30px 8vw 80px;
-    }
-
-    .intro {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 55px;
-
-        padding:
-            25vw 0 18vw;
-    }
-
-    .intro h2 {
-
-        font-size: 90px;
-    }
-
-    .entry {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 15px;
-    }
-
-    .entry h3 {
-
-        font-size: 45px;
-    }
-
-    .entry p {
-
-        font-size: 21px;
-    }
-
-    footer {
-
-        flex-direction:
-            column;
-
-        gap: 10px;
-    }
-
+========================================================= */
+@media(max-width:700px){
+  .hero{
+    min-height:720px;
+  }
+  .photo{
+    background-position:58% center;
+    filter:
+      saturate(.78)
+      contrast(1.02)
+      brightness(.76);
+  }
+  .moonlight{
+    width:85vw;
+    height:85vw;
+    right:-35vw;
+    top:-18vw;
+  }
+  .hero-content{
+    left:8vw;
+    right:8vw;
+    bottom:13vh;
+  }
+  h1{
+    font-size:clamp(68px,21vw,115px);
+  }
+  .subtitle{
+    max-width:330px;
+    margin-top:25px;
+  }
+  .statement{
+    max-width:310px;
+  }
+  .scroll{
+    display:none;
+  }
+  .beliefs{
+    grid-template-columns:1fr;
+    gap:50px;
+    margin-top:70px;
+  }
+  .witch{
+    padding:13vh 8vw;
+  }
+  .witch h2{
+    margin-bottom:45px;
+  }
+  .final-line{
+    margin-top:80px;
+  }
+  .branches{
+    opacity:.55;
+  }
 }
-
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition:none !important;
+  }
+}
 </style>
 </head>
-
-
 <body>
-
-
-<!-- ================================================
-     PAGE ONE
-================================================= -->
-
-<section class="forest" id="home">
-
-    <div class="moon"></div>
-
-    <div class="mist"></div>
-    <div class="mist two"></div>
-
-
-    <div class="trees">
-
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-
+<!-- =======================================================
+     HERO
+======================================================= -->
+<section class="hero" id="home">
+  <!-- Your actual photograph -->
+  <div class="photo"></div>
+  <!-- atmospheric moonlight -->
+  <div class="moonlight"></div>
+  <!-- fog layers -->
+  <div class="fog one"></div>
+  <div class="fog two"></div>
+  <div class="fog three"></div>
+  <!-- subtle foreground branches -->
+  <div class="branches">
+    <div class="branch b1"></div>
+    <div class="branch b2"></div>
+    <div class="branch b3"></div>
+  </div>
+  <!-- floating particles -->
+  <div class="particles">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+    <span class="particle p6"></span>
+    <span class="particle p7"></span>
+    <span class="particle p8"></span>
+    <span class="particle p9"></span>
+  </div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <!-- TEXT -->
+  <div class="hero-content">
+    <div class="kicker">
+      Green Witch
     </div>
-
-
-    <div class="fireflies">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
+    <h1>
+      Curly Witch.
+    </h1>
+    <div class="subtitle">
+      Master of Mathematics.<br>
+      Erotic artist.
     </div>
-
-
-    <div class="hero-content">
-
-        <h1 class="name">
-            Curly Witch.
-        </h1>
-
-        <div class="role">
-            Master of Mathematics. Erotic artist.
-        </div>
-
-        <div class="description">
-            Nature feeds me.<br>
-            I turn it into desire.
-        </div>
-
-
-        <a
-            href="https://onlyfans.com/curly.witch/c3"
-            class="cta"
-            data-cta="of"
-        >
-            Come closer
-            <span>→</span>
-        </a>
-
-
-        <a
-            href="#witch"
-            class="cta"
-            style="
-                border-bottom:0;
-                opacity:.6;
-                margin-top:18px;
-            "
-        >
-            The Witch
-            <span>↓</span>
-        </a>
-
+    <div class="statement">
+      Nature feeds me.<br>
+      I turn it into desire.
     </div>
-
-</section>
-
-
-<!-- ================================================
-     PAGE TWO
-================================================= -->
-
-<section class="witch" id="witch">
-
-
-    <nav class="nav">
-
-        <a href="#home">
-            Curly Witch
-        </a>
-
-        <a href="#home">
-            Back to the forest
-        </a>
-
-    </nav>
-
-
-    <div class="intro">
-
-        <h2>
-            The<br>
-            <em>Witch.</em>
-        </h2>
-
-
-        <div class="intro-text">
-
-            <p>
-                Soft face. Sharp boundaries.
-            </p>
-
-            <p>
-                I am a mathematician who never
-                stopped being fascinated by things
-                that cannot be measured.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="grimoire">
-
-        <div class="grimoire-title">
-            A few things I believe
-        </div>
-
-
-        <article class="entry">
-
-            <div class="entry-number">
-                I — Nature
-            </div>
-
-            <div>
-
-                <h3>
-                    Wildness is not chaos.
-                </h3>
-
-                <p>
-                    I find something deeply beautiful
-                    in things that grow without asking
-                    permission. Forests, bodies, seasons,
-                    curls, desire.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="entry">
-
-            <div class="entry-number">
-                II — Mathematics
-            </div>
-
-            <div>
-
-                <h3>
-                    Everything has a pattern.
-                </h3>
-
-                <p>
-                    Mathematics taught me to look closely.
-                    To notice structure, rhythm, repetition,
-                    asymmetry — and the strange beauty
-                    hidden inside all of it.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="entry">
-
-            <div class="entry-number">
-                III — Eros
-            </div>
-
-            <div>
-
-                <h3>
-                    Wanting deserves time.
-                </h3>
-
-                <p>
-                    I don't believe everything beautiful
-                    needs to be revealed immediately.
-                    Some things become more powerful
-                    when you let them unfold.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="entry">
-
-            <div class="entry-number">
-                IV — Boundaries
-            </div>
-
-            <div>
-
-                <h3>
-                    Warmth is not access.
-                </h3>
-
-                <p>
-                    I can be soft without being available
-                    to everyone. I can be open without
-                    giving everything away.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-
-    <div class="quote">
-
-        <div class="quote-symbol">
-            ☽
-        </div>
-
-        <h2>
-            I don't want to be
-            impossible to resist.
-            I want to be impossible
-            to <em>replace.</em>
-        </h2>
-
-    </div>
-
-
     <a
-        href="https://onlyfans.com/curly.witch/c3"
-        class="cta"
-        style="
-            color:#20251f;
-            border-bottom-color:#20251f;
-            display:flex;
-            width:max-content;
-            margin:0 auto 100px;
-        "
-        data-cta="of-bottom"
+      class="cta"
+      href="https://onlyfans.com/curly.witch/c3"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-        Come closer
-        <span>→</span>
+      Come closer <span>→</span>
     </a>
-
-
+  </div>
+  <div class="scroll">
+    Scroll to enter
+  </div>
 </section>
-
-
-<footer>
-
-    <span>© Curly Witch</span>
-
-    <span>Nature · Mathematics · Eros</span>
-
-</footer>
-
-
+<!-- =======================================================
+     THE WITCH
+======================================================= -->
+<section class="witch" id="witch">
+  <div class="witch-inner">
+    <div class="witch-label">
+      The second layer
+    </div>
+    <h2>
+      The Witch.
+    </h2>
+    <p class="intro">
+      I am a mathematician who never stopped being fascinated
+      by things that cannot be measured.
+    </p>
+    <div class="beliefs">
+      <article class="belief">
+        <div class="belief-number">I — Nature</div>
+        <h3>Wildness is not chaos.</h3>
+        <p>
+          There is intelligence in everything that grows,
+          changes and refuses to stay still.
+        </p>
+      </article>
+      <article class="belief">
+        <div class="belief-number">II — Mathematics</div>
+        <h3>Everything has a pattern.</h3>
+        <p>
+          Rhythm, repetition, proportion, tension.
+          Even desire has its own geometry.
+        </p>
+      </article>
+      <article class="belief">
+        <div class="belief-number">III — Eros</div>
+        <h3>Wanting deserves time.</h3>
+        <p>
+          I prefer anticipation to excess,
+          atmosphere to noise, and connection to performance.
+        </p>
+      </article>
+      <article class="belief">
+        <div class="belief-number">IV — Boundaries</div>
+        <h3>Warmth is not access.</h3>
+        <p>
+          I can be soft without being available to everyone.
+          What I share, I choose.
+        </p>
+      </article>
+    </div>
+    <div class="final-line">
+      I don't want to be impossible to resist.
+      I want to be impossible to replace.
+    </div>
+    <a
+      class="cta witch-cta"
+      href="https://onlyfans.com/curly.witch/c3"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Come closer <span>→</span>
+    </a>
+  </div>
+</section>
 <script>
-
-/* -----------------------------------------------
-   TRAFFIC SOURCE
------------------------------------------------- */
-
-const params =
-    new URLSearchParams(window.location.search);
-
+/* =========================================================
+   SUBTLE PARALLAX
+========================================================= */
+const hero = document.querySelector(".hero");
+hero.addEventListener("pointermove", (e) => {
+  const x =
+    (e.clientX / window.innerWidth - .5) * 12;
+  const y =
+    (e.clientY / window.innerHeight - .5) * 8;
+  document.documentElement.style.setProperty(
+    "--mouse-x",
+    `${x}px`
+  );
+  document.documentElement.style.setProperty(
+    "--mouse-y",
+    `${y}px`
+  );
+  document.documentElement.style.setProperty(
+    "--content-x",
+    `${x * -.25}px`
+  );
+  document.documentElement.style.setProperty(
+    "--content-y",
+    `${y * -.25}px`
+  );
+});
+hero.addEventListener("pointerleave", () => {
+  document.documentElement.style.setProperty(
+    "--mouse-x",
+    "0px"
+  );
+  document.documentElement.style.setProperty(
+    "--mouse-y",
+    "0px"
+  );
+});
+/* =========================================================
+   SAVE TRAFFIC SOURCE
+========================================================= */
+const params = new URLSearchParams(
+  window.location.search
+);
 const source =
-    params.get("utm_source");
-
-if (source) {
-
-    localStorage.setItem(
-        "traffic_source",
-        source
-    );
-
-    localStorage.setItem(
-        "traffic_timestamp",
-        Date.now()
-    );
-
+  params.get("utm_source") ||
+  params.get("source");
+if(source){
+  localStorage.setItem(
+    "traffic_source",
+    source
+  );
+  localStorage.setItem(
+    "traffic_timestamp",
+    new Date().toISOString()
+  );
 }
-
-
-/* -----------------------------------------------
+/* =========================================================
    CTA TRACKING
------------------------------------------------- */
-
-document
-    .querySelectorAll("[data-cta]")
-    .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const trafficSource =
-                localStorage.getItem(
-                    "traffic_source"
-                ) || "direct";
-
-            console.log({
-
-                event: "cta_click",
-
-                button:
-                    button.dataset.cta,
-
-                source:
-                    trafficSource
-
-            });
-
-        });
-
-    });
-
+========================================================= */
+document.querySelectorAll(".cta").forEach(button => {
+  button.addEventListener("click", () => {
+    const source =
+      localStorage.getItem("traffic_source")
+      || "direct";
+    console.log(
+      "Curly Witch CTA click:",
+      source
+    );
+  });
+});
 </script>
-
-
 </body>
 </html>
