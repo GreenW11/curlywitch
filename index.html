@@ -6,815 +6,529 @@
 
 <title>Curly Witch.</title>
 
-<meta name="description" content="Curly Witch. Master of Mathematics. Erotic artist. Nature, desire, art and boundaries.">
-<meta name="theme-color" content="#08110d">
+<meta
+  name="description"
+  content="Curly Witch. Master of Mathematics. Erotic artist."
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap"
+  rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+:root {
+  --forest: #07100b;
+  --forest-soft: #101d15;
+  --cream: #eee9df;
+  --muted: rgba(238,233,223,.62);
+  --line: rgba(238,233,223,.25);
+}
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background: #07100c;
-    color: #eee9df;
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
+  margin: 0;
+  background: var(--forest);
+  color: var(--cream);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 
-/* =========================================================
-   MAIN HERO
-========================================================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero {
-    position: relative;
-    width: 100%;
-    min-height: 100svh;
-    overflow: hidden;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
 
-    background:
-        radial-gradient(
-            ellipse at 54% 48%,
-            rgba(37, 65, 47, 0.42) 0%,
-            rgba(14, 30, 21, 0.72) 38%,
-            rgba(4, 10, 7, 1) 82%
-        );
-
-    isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      #21382a 0%,
+      #122419 34%,
+      #08110c 68%,
+      #040805 100%
+    );
 }
 
 
-/* subtle forest-like depth */
+/* subtle forest depth */
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: -10%;
+.forest {
+  position: absolute;
+  inset: -8%;
 
-    background:
-        radial-gradient(
-            ellipse at 20% 70%,
-            rgba(35, 67, 47, 0.38),
-            transparent 48%
-        ),
-        radial-gradient(
-            ellipse at 85% 25%,
-            rgba(26, 51, 38, 0.34),
-            transparent 44%
-        );
+  background:
+    radial-gradient(
+      ellipse at 15% 55%,
+      rgba(48,78,54,.32),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 85% 35%,
+      rgba(40,68,47,.25),
+      transparent 42%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(2,8,5,.7),
+      transparent 32%,
+      transparent 68%,
+      rgba(2,8,5,.72)
+    );
 
-    filter: blur(35px);
-    opacity: .8;
-    z-index: -5;
+  filter: blur(18px);
+
+  z-index: -5;
 }
 
 
-/* =========================================================
-   FOG — BACKGROUND
-========================================================= */
+/* =====================================================
+   REAL FOG
+===================================================== */
 
-.fog-back {
-    position: absolute;
-    inset: -12%;
+.fog {
+  position: absolute;
+  inset: -12%;
 
-    width: 124%;
-    height: 124%;
+  width: 124%;
+  height: 124%;
 
-    object-fit: cover;
+  object-fit: cover;
 
-    opacity: .28;
+  opacity: .31;
 
-    mix-blend-mode: screen;
+  mix-blend-mode: screen;
 
-    filter:
-        blur(1px)
-        brightness(.72)
-        contrast(.92);
+  filter:
+    brightness(.72)
+    contrast(.88)
+    blur(1px);
 
-    transform: scale(1.08);
+  transform: scale(1.08);
 
-    z-index: -3;
+  z-index: 2;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 
-/* =========================================================
-   PHOTO
-========================================================= */
+/* =====================================================
+   PORTRAIT
+===================================================== */
 
-.portrait-wrap {
-    position: absolute;
+.photo-stage {
+  position: absolute;
 
-    left: 50%;
-    top: 50%;
+  left: 50%;
+  top: 50%;
 
-    width: min(58vw, 720px);
-    height: 88vh;
+  width: min(58vw, 760px);
+  height: 94svh;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    z-index: 1;
+  z-index: 1;
+}
 
-    pointer-events: none;
+.photo {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    brightness(.9)
+    contrast(1.03)
+    saturate(.78);
+
+  /*
+    The photo fades softly into the atmosphere.
+    The upper area stays much more intact so the horns
+    are not sacrificed.
+  */
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 72%,
+      rgba(0,0,0,.92) 82%,
+      transparent 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 72%,
+      rgba(0,0,0,.92) 82%,
+      transparent 100%
+    );
 }
 
 
-/*
-   The photo is an IMG rather than a background.
-   This is intentional:
-   it prevents the horns from being cropped.
-*/
+/* =====================================================
+   FOG IN FRONT OF LOWER BODY
+===================================================== */
 
-.portrait {
-    width: auto;
-    height: auto;
+.fog-ground {
+  position: absolute;
 
-    max-width: 100%;
-    max-height: 100%;
+  left: -10%;
+  bottom: -18%;
 
-    object-fit: contain;
+  width: 120%;
+  height: 48%;
 
-    display: block;
+  background:
+    linear-gradient(
+      to top,
+      rgba(207,215,207,.18),
+      rgba(207,215,207,.07) 38%,
+      transparent 100%
+    );
 
-    filter:
-        brightness(.88)
-        contrast(1.03)
-        saturate(.78);
+  filter: blur(18px);
 
-    /*
-       Soft edge fade.
-       The center stays visible while the edges
-       disappear into the atmosphere.
-    */
+  z-index: 3;
 
-    -webkit-mask-image:
-        radial-gradient(
-            ellipse 72% 78% at 50% 48%,
-            black 53%,
-            rgba(0,0,0,.96) 65%,
-            transparent 94%
-        );
-
-    mask-image:
-        radial-gradient(
-            ellipse 72% 78% at 50% 48%,
-            black 53%,
-            rgba(0,0,0,.96) 65%,
-            transparent 94%
-        );
-
-    /*
-       Very subtle movement.
-    */
-
-    animation: portraitBreath 12s ease-in-out infinite;
+  pointer-events: none;
 }
 
 
-@keyframes portraitBreath {
+/* =====================================================
+   DARK EDGES
+===================================================== */
 
-    0%, 100% {
-        transform: scale(1);
-    }
+.edge {
+  position: absolute;
+  inset: 0;
 
-    50% {
-        transform: scale(1.018);
-    }
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,6,4,.72),
+      transparent 25%,
+      transparent 75%,
+      rgba(2,6,4,.72)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(2,6,4,.25),
+      transparent 22%,
+      transparent 75%,
+      rgba(2,6,4,.55)
+    );
+
+  z-index: 4;
+
+  pointer-events: none;
 }
 
 
-/* =========================================================
-   LIGHT AROUND PORTRAIT
-========================================================= */
+/* =====================================================
+   HERO COPY
+===================================================== */
 
-.moonlight {
-    position: absolute;
+.copy {
+  position: absolute;
 
-    width: min(52vw, 700px);
-    height: min(52vw, 700px);
+  left: clamp(28px, 7vw, 100px);
+  bottom: clamp(48px, 9vh, 92px);
 
-    left: 50%;
-    top: 48%;
-
-    transform: translate(-50%, -50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(179, 195, 186, .15) 0%,
-            rgba(115, 142, 127, .07) 27%,
-            transparent 67%
-        );
-
-    filter: blur(25px);
-
-    z-index: 0;
-
-    pointer-events: none;
-
-    animation: moonPulse 9s ease-in-out infinite;
+  z-index: 6;
 }
 
+.name {
+  margin: 0 0 10px;
 
-@keyframes moonPulse {
+  font-family: "Cormorant Garamond", serif;
 
-    0%, 100% {
-        opacity: .65;
-        transform: translate(-50%, -50%) scale(1);
-    }
+  font-size: clamp(52px, 6vw, 86px);
 
-    50% {
-        opacity: .95;
-        transform: translate(-50%, -50%) scale(1.06);
-    }
+  font-weight: 500;
+
+  line-height: .82;
+
+  letter-spacing: -.035em;
 }
 
+.role {
+  margin: 0;
 
-/* =========================================================
-   FOG — FOREGROUND
-========================================================= */
+  font-size: 10px;
 
-.fog-front {
-    position: absolute;
+  letter-spacing: .18em;
 
-    width: 135%;
-    height: 135%;
+  text-transform: uppercase;
 
-    left: -17%;
-    top: -15%;
-
-    object-fit: cover;
-
-    opacity: .34;
-
-    mix-blend-mode: screen;
-
-    filter:
-        blur(1.5px)
-        brightness(.82)
-        contrast(.86);
-
-    transform: scale(1.13);
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    /*
-       The video itself will naturally move,
-       but this gives the whole layer another
-       extremely slow drift.
-    */
-
-    animation: fogDrift 28s ease-in-out infinite alternate;
+  color: var(--muted);
 }
-
-
-@keyframes fogDrift {
-
-    from {
-        transform: scale(1.13) translate3d(-1%, -1%, 0);
-    }
-
-    to {
-        transform: scale(1.20) translate3d(2%, 1%, 0);
-    }
-}
-
-
-/* =========================================================
-   SECOND ATMOSPHERIC FOG
-========================================================= */
-
-.fog-low {
-    position: absolute;
-
-    left: -20%;
-    bottom: -12%;
-
-    width: 140%;
-    height: 58%;
-
-    object-fit: cover;
-
-    opacity: .24;
-
-    mix-blend-mode: screen;
-
-    filter:
-        blur(4px)
-        brightness(.68);
-
-    z-index: 4;
-
-    pointer-events: none;
-
-    transform: scale(1.15);
-
-    animation: lowFog 24s ease-in-out infinite alternate;
-}
-
-
-@keyframes lowFog {
-
-    from {
-        transform: scale(1.15) translateX(-3%);
-    }
-
-    to {
-        transform: scale(1.22) translateX(4%);
-    }
-}
-
-
-/* =========================================================
-   DARK VIGNETTE
-========================================================= */
-
-.vignette {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 38%,
-            rgba(2, 7, 5, .22) 65%,
-            rgba(1, 4, 3, .78) 100%
-        );
-
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   GRAIN
-========================================================= */
-
-.grain {
-    position: absolute;
-    inset: -50%;
-
-    z-index: 8;
-
-    pointer-events: none;
-
-    opacity: .045;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-
-    animation: grainMove .25s steps(2) infinite;
-}
-
-
-@keyframes grainMove {
-
-    0% {
-        transform: translate(0, 0);
-    }
-
-    25% {
-        transform: translate(2%, -1%);
-    }
-
-    50% {
-        transform: translate(-1%, 2%);
-    }
-
-    75% {
-        transform: translate(1%, 1%);
-    }
-
-    100% {
-        transform: translate(-2%, -2%);
-    }
-}
-
-
-/* =========================================================
-   HERO CONTENT
-========================================================= */
-
-.hero-content {
-    position: absolute;
-
-    left: clamp(28px, 7vw, 110px);
-    bottom: clamp(70px, 11vh, 120px);
-
-    z-index: 10;
-
-    max-width: 420px;
-}
-
-
-.hero-title {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(58px, 7vw, 105px);
-
-    font-weight: 500;
-
-    line-height: .84;
-
-    letter-spacing: -.035em;
-
-    margin-bottom: 18px;
-
-    text-shadow:
-        0 4px 35px rgba(0,0,0,.55);
-}
-
-
-.hero-subtitle {
-    font-family: "Inter", sans-serif;
-
-    font-size: clamp(12px, 1.1vw, 15px);
-
-    letter-spacing: .13em;
-
-    text-transform: uppercase;
-
-    color: rgba(239, 235, 225, .78);
-
-    margin-bottom: 30px;
-}
-
 
 .enter {
-    display: inline-flex;
-    align-items: center;
-    gap: 13px;
+  display: inline-flex;
 
-    font-family: "Cormorant Garamond", serif;
+  margin-top: 27px;
 
-    font-size: 22px;
+  align-items: center;
+  gap: 11px;
 
-    font-weight: 500;
+  font-family: "Cormorant Garamond", serif;
 
-    letter-spacing: .02em;
+  font-size: 21px;
 
-    padding-bottom: 6px;
+  padding-bottom: 5px;
 
-    border-bottom: 1px solid rgba(235, 230, 216, .45);
+  border-bottom: 1px solid var(--line);
 
-    transition:
-        gap .4s ease,
-        border-color .4s ease,
-        opacity .4s ease;
+  transition:
+    gap .35s ease,
+    border-color .35s ease;
 }
-
 
 .enter:hover {
-    gap: 22px;
-    border-color: rgba(235, 230, 216, .9);
+  gap: 18px;
+  border-color: rgba(238,233,223,.75);
 }
 
 
-/* =========================================================
-   SCROLL
-========================================================= */
+/* =====================================================
+   SMALL SIDE LABEL
+===================================================== */
 
-.scroll {
-    position: absolute;
+.side-note {
+  position: absolute;
 
-    right: 34px;
-    bottom: 34px;
+  right: 34px;
+  bottom: 35px;
 
-    z-index: 10;
+  z-index: 6;
 
-    writing-mode: vertical-rl;
+  font-size: 9px;
 
-    font-size: 9px;
+  letter-spacing: .23em;
 
-    letter-spacing: .25em;
+  text-transform: uppercase;
 
-    text-transform: uppercase;
+  color: rgba(238,233,223,.42);
 
-    color: rgba(235, 230, 220, .46);
+  writing-mode: vertical-rl;
 }
 
 
-/* =========================================================
-   THE WITCH
-========================================================= */
+/* =====================================================
+   SECOND SECTION
+===================================================== */
 
 .witch {
-    position: relative;
+  min-height: 100svh;
 
-    min-height: 100svh;
+  padding:
+    130px
+    clamp(28px, 10vw, 150px);
 
-    padding:
-        clamp(100px, 13vh, 170px)
-        clamp(28px, 9vw, 140px);
-
-    background:
-        radial-gradient(
-            ellipse at 80% 20%,
-            rgba(37, 64, 47, .28),
-            transparent 45%
-        ),
-        #07100c;
-
-    display: flex;
-    align-items: center;
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(37,65,46,.22),
+      transparent 40%
+    ),
+    var(--forest);
 }
-
 
 .witch-inner {
-    width: min(920px, 100%);
-    margin: 0 auto;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.kicker {
+  margin-bottom: 24px;
+
+  font-size: 9px;
+
+  letter-spacing: .3em;
+
+  text-transform: uppercase;
+
+  color: rgba(238,233,223,.42);
+}
+
+.witch h2 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(52px, 7vw, 92px);
+
+  font-weight: 500;
+
+  line-height: .9;
+
+  letter-spacing: -.035em;
+}
+
+.intro {
+  max-width: 650px;
+
+  margin: 55px 0 80px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(25px, 3vw, 38px);
+
+  line-height: 1.16;
+
+  color: #ddd7ca;
+}
+
+.principles {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 60px 100px;
+
+  max-width: 780px;
+}
+
+.principle h3 {
+  margin: 0 0 13px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 27px;
+
+  font-weight: 500;
+}
+
+.principle p {
+  max-width: 330px;
+
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  color: rgba(238,233,223,.58);
+}
+
+.closing {
+  margin-top: 95px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(23px, 2.5vw, 32px);
+
+  font-style: italic;
+
+  color: rgba(238,233,223,.78);
+}
+
+.final-link {
+  display: inline-block;
+
+  margin-top: 35px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 23px;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid var(--line);
 }
 
 
-.witch-label {
-    font-size: 10px;
-
-    letter-spacing: .3em;
-
-    text-transform: uppercase;
-
-    color: rgba(225, 220, 208, .45);
-
-    margin-bottom: 28px;
-}
-
-
-.witch-title {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(48px, 7vw, 94px);
-
-    font-weight: 500;
-
-    line-height: .92;
-
-    margin-bottom: 55px;
-
-    max-width: 700px;
-}
-
-
-.witch-intro {
-    font-family: "IM Fell English", serif;
-
-    font-size: clamp(24px, 3vw, 38px);
-
-    line-height: 1.22;
-
-    max-width: 720px;
-
-    margin-bottom: 80px;
-
-    color: #ded8ca;
-}
-
-
-.witch-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap:
-        60px 90px;
-
-    max-width: 780px;
-}
-
-
-.witch-item h3 {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 28px;
-
-    font-weight: 500;
-
-    margin-bottom: 12px;
-}
-
-
-.witch-item p {
-    font-size: 14px;
-
-    line-height: 1.85;
-
-    color: rgba(229, 225, 214, .67);
-
-    max-width: 330px;
-}
-
-
-.witch-final {
-    margin-top: 100px;
-
-    font-family: "IM Fell English", serif;
-
-    font-style: italic;
-
-    font-size: clamp(22px, 2.5vw, 31px);
-
-    color: rgba(230, 225, 214, .82);
-
-    max-width: 650px;
-}
-
-
-/* =========================================================
-   FINAL CTA
-========================================================= */
-
-.final-cta {
-    margin-top: 45px;
-
-    display: inline-flex;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 25px;
-
-    padding-bottom: 7px;
-
-    border-bottom: 1px solid rgba(230,225,214,.45);
-
-    transition:
-        border-color .35s ease,
-        transform .35s ease;
-}
-
-
-.final-cta:hover {
-    border-color: rgba(230,225,214,.9);
-
-    transform: translateX(4px);
-}
-
-
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
-    .hero {
-        min-height: 100svh;
-    }
+  .photo-stage {
+    width: 100vw;
+    height: 84svh;
 
+    top: 43%;
+  }
 
-    .portrait-wrap {
-        width: 100vw;
-        height: 80svh;
+  .photo {
+    max-width: 96vw;
+    max-height: 82svh;
+  }
 
-        top: 44%;
-    }
+  .fog {
+    opacity: .27;
+  }
 
+  .copy {
+    left: 25px;
+    bottom: 58px;
+  }
 
-    .portrait {
-        max-width: 94vw;
-        max-height: 78svh;
-    }
+  .name {
+    font-size: 58px;
+  }
 
+  .role {
+    max-width: 230px;
+    line-height: 1.55;
+  }
 
-    .moonlight {
-        width: 100vw;
-        height: 100vw;
-    }
+  .side-note {
+    display: none;
+  }
 
+  .witch {
+    padding:
+      100px 25px
+      90px;
+  }
 
-    .fog-back {
-        opacity: .25;
-    }
+  .principles {
+    grid-template-columns: 1fr;
 
+    gap: 42px;
+  }
 
-    .fog-front {
-        opacity: .31;
-    }
+  .intro {
+    margin-top: 45px;
+    margin-bottom: 60px;
+  }
 
-
-    .fog-low {
-        opacity: .22;
-    }
-
-
-    .hero-content {
-
-        left: 24px;
-        right: 24px;
-
-        bottom: 66px;
-
-        max-width: none;
-    }
-
-
-    .hero-title {
-        font-size: clamp(57px, 17vw, 78px);
-
-        margin-bottom: 15px;
-    }
-
-
-    .hero-subtitle {
-        font-size: 10px;
-
-        letter-spacing: .11em;
-
-        max-width: 260px;
-
-        line-height: 1.6;
-
-        margin-bottom: 25px;
-    }
-
-
-    .enter {
-        font-size: 21px;
-    }
-
-
-    .scroll {
-        display: none;
-    }
-
-
-    .witch {
-        padding:
-            100px 25px
-            90px;
-    }
-
-
-    .witch-title {
-        font-size: 57px;
-
-        margin-bottom: 42px;
-    }
-
-
-    .witch-intro {
-        font-size: 28px;
-
-        margin-bottom: 60px;
-    }
-
-
-    .witch-grid {
-        grid-template-columns: 1fr;
-
-        gap: 43px;
-    }
-
-
-    .witch-final {
-        margin-top: 70px;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-
-        scroll-behavior: auto !important;
-    }
+  .closing {
+    margin-top: 70px;
+  }
 }
 
 </style>
@@ -824,394 +538,186 @@ a {
 <body>
 
 
-<!-- ======================================================
+<!-- =====================================================
      HERO
-======================================================= -->
+===================================================== -->
 
 <section class="hero" id="home">
 
-
-    <!-- BACKGROUND FOG -->
-
-    <video
-        class="fog-back"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true">
-
-        <source
-            src="126139-735667150.mp4"
-            type="video/mp4">
-
-    </video>
+  <div class="forest"></div>
 
 
-    <!-- LIGHT -->
+  <!-- YOUR ACTUAL FOG VIDEO -->
 
-    <div class="moonlight"></div>
+  <video
+    class="fog"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true">
 
+    <source
+      src="126139-735667150.mp4"
+      type="video/mp4">
 
-    <!-- PORTRAIT -->
-
-    <div class="portrait-wrap">
-
-        <img
-            class="portrait"
-            src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
-            alt="Curly Witch"
-        >
-
-    </div>
-
-
-    <!-- FOREGROUND FOG -->
-
-    <video
-        class="fog-front"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true">
-
-        <source
-            src="126139-735667150.mp4"
-            type="video/mp4">
-
-    </video>
+  </video>
 
 
-    <!-- LOW FOG -->
+  <!-- YOUR PHOTO -->
 
-    <video
-        class="fog-low"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true">
+  <div class="photo-stage">
 
-        <source
-            src="126139-735667150.mp4"
-            type="video/mp4">
+    <img
+      class="photo"
+      src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
+      alt="Curly Witch"
+    >
 
-    </video>
+  </div>
 
 
-    <!-- DARK VIGNETTE -->
+  <div class="fog-ground"></div>
 
-    <div class="vignette"></div>
-
-
-    <!-- FILM GRAIN -->
-
-    <div class="grain"></div>
+  <div class="edge"></div>
 
 
-    <!-- TEXT -->
+  <!-- MINIMAL TEXT -->
 
-    <div class="hero-content">
+  <div class="copy">
 
-        <h1 class="hero-title">
-            Curly Witch.
-        </h1>
+    <h1 class="name">
+      Curly Witch.
+    </h1>
 
-        <p class="hero-subtitle">
-            Master of Mathematics. Erotic artist.
-        </p>
+    <p class="role">
+      Master of Mathematics. Erotic artist.
+    </p>
 
-        <a
-            class="enter"
-            href="https://onlyfans.com/curly.witch/c3"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-source="hero">
+    <a
+      class="enter"
+      href="https://onlyfans.com/curly.witch/c3"
+      target="_blank"
+      rel="noopener noreferrer">
 
-            Come closer <span>→</span>
+      Come closer <span>→</span>
 
-        </a>
+    </a>
 
-    </div>
+  </div>
 
 
-    <div class="scroll">
-        The Witch ↓
-    </div>
-
+  <div class="side-note">
+    The Witch ↓
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      THE WITCH
-======================================================= -->
+===================================================== -->
 
 <section class="witch" id="witch">
 
-    <div class="witch-inner">
+  <div class="witch-inner">
 
-        <div class="witch-label">
-            The Witch
-        </div>
+    <div class="kicker">
+      The Witch
+    </div>
+
+    <h2>
+      Soft face.<br>
+      Sharp boundaries.
+    </h2>
 
 
-        <h2 class="witch-title">
-            Soft face.<br>
-            Sharp boundaries.
-        </h2>
+    <p class="intro">
+      I am a mathematician who never stopped
+      being fascinated by things that cannot be measured.
+    </p>
 
 
-        <p class="witch-intro">
-            I am a mathematician who never stopped being
-            fascinated by things that cannot be measured.
+    <div class="principles">
+
+
+      <div class="principle">
+
+        <h3>Nature</h3>
+
+        <p>
+          Nature feeds me. I pay attention to its
+          textures, rhythms, silence and wildness.
+          I carry that feeling into everything I create.
         </p>
 
-
-        <div class="witch-grid">
-
-
-            <div class="witch-item">
-
-                <h3>Nature</h3>
-
-                <p>
-                    Nature feeds me. I pay attention to
-                    its textures, rhythms, silence and wildness.
-                    I carry that feeling into everything I create.
-                </p>
-
-            </div>
+      </div>
 
 
-            <div class="witch-item">
+      <div class="principle">
 
-                <h3>Mathematics</h3>
+        <h3>Mathematics</h3>
 
-                <p>
-                    Everything has a pattern.
-                    Even desire has structure — rhythm,
-                    tension, distance and timing.
-                </p>
-
-            </div>
-
-
-            <div class="witch-item">
-
-                <h3>Eros</h3>
-
-                <p>
-                    Wanting deserves time.
-                    I am interested in anticipation,
-                    atmosphere, intimacy and the space between
-                    looking and touching.
-                </p>
-
-            </div>
-
-
-            <div class="witch-item">
-
-                <h3>Boundaries</h3>
-
-                <p>
-                    Warmth is not access.
-                    I choose what I create, who I share it with,
-                    and how close anyone gets.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <p class="witch-final">
-            I don't want to be impossible to resist.
-            I want to be impossible to replace.
+        <p>
+          Everything has a pattern.
+          Even desire has structure — rhythm,
+          tension, distance and timing.
         </p>
 
+      </div>
 
-        <a
-            class="final-cta"
-            href="https://onlyfans.com/curly.witch/c3"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-source="witch">
 
-            Enter my forest →
-        </a>
+      <div class="principle">
+
+        <h3>Eros</h3>
+
+        <p>
+          Wanting deserves time.
+          I am interested in anticipation,
+          atmosphere, intimacy and the space between
+          looking and touching.
+        </p>
+
+      </div>
+
+
+      <div class="principle">
+
+        <h3>Boundaries</h3>
+
+        <p>
+          Warmth is not access.
+          I choose what I create, who I share it with,
+          and how close anyone gets.
+        </p>
+
+      </div>
 
 
     </div>
 
+
+    <p class="closing">
+      I don't want to be impossible to resist.
+      I want to be impossible to replace.
+    </p>
+
+
+    <a
+      class="final-link"
+      href="https://onlyfans.com/curly.witch/c3"
+      target="_blank"
+      rel="noopener noreferrer">
+
+      Enter my forest →
+
+    </a>
+
+  </div>
+
 </section>
-
-
-
-<script>
-
-/* =========================================================
-   SIMPLE SOURCE TRACKING
-========================================================= */
-
-(function () {
-
-    const params = new URLSearchParams(window.location.search);
-
-    const source =
-        params.get("utm_source") ||
-        params.get("source") ||
-        document.referrer ||
-        "direct";
-
-    try {
-        localStorage.setItem(
-            "cw_source",
-            source
-        );
-    } catch (e) {}
-
-
-
-    /*
-       Preserve UTM parameters when someone
-       clicks through to OnlyFans.
-    */
-
-    document.querySelectorAll(
-        'a[href*="onlyfans.com"]'
-    ).forEach(function (link) {
-
-        try {
-
-            const url = new URL(link.href);
-
-            [
-                "utm_source",
-                "utm_medium",
-                "utm_campaign",
-                "utm_content"
-            ].forEach(function (key) {
-
-                if (params.has(key)) {
-                    url.searchParams.set(
-                        key,
-                        params.get(key)
-                    );
-                }
-
-            });
-
-            link.href = url.toString();
-
-        } catch (e) {}
-
-    });
-
-})();
-
-
-
-/* =========================================================
-   VERY SUBTLE MOUSE PARALLAX
-========================================================= */
-
-(function () {
-
-    if (
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
-        return;
-    }
-
-
-    const portrait =
-        document.querySelector(".portrait-wrap");
-
-    const moon =
-        document.querySelector(".moonlight");
-
-    let targetX = 0;
-    let targetY = 0;
-
-    let currentX = 0;
-    let currentY = 0;
-
-
-    window.addEventListener(
-        "mousemove",
-        function (e) {
-
-            targetX =
-                (e.clientX / window.innerWidth - .5) * 10;
-
-            targetY =
-                (e.clientY / window.innerHeight - .5) * 7;
-
-        },
-        { passive: true }
-    );
-
-
-    function animate() {
-
-        currentX +=
-            (targetX - currentX) * .035;
-
-        currentY +=
-            (targetY - currentY) * .035;
-
-
-        portrait.style.transform =
-            `translate(
-                calc(-50% + ${currentX}px),
-                calc(-50% + ${currentY}px)
-            )`;
-
-
-        moon.style.transform =
-            `translate(
-                calc(-50% + ${currentX * .35}px),
-                calc(-50% + ${currentY * .35}px)
-            )`;
-
-
-        requestAnimationFrame(animate);
-    }
-
-
-    animate();
-
-})();
-
-
-
-/* =========================================================
-   SMOOTH SCROLL
-========================================================= */
-
-document.querySelector(".scroll")
-    ?.addEventListener("click", function () {
-
-        document
-            .querySelector("#witch")
-            ?.scrollIntoView({
-                behavior: "smooth"
-            });
-
-    });
-
-</script>
-
 
 </body>
 </html>
