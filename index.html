@@ -1,533 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Curly Witch</title>
-
-<style>
-:root {
-    --black: #07100c;
-    --deep: #0c1912;
-    --cream: #eee9df;
-    --muted: rgba(238,233,223,.68);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    background: var(--black);
-}
-
-body {
-    margin: 0;
-    background: var(--black);
-    color: var(--cream);
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
-}
-
-section {
-    position: relative;
-    width: 100%;
-    min-height: 100svh;
-    overflow: hidden;
-}
-
-/* =========================================================
-   SCENE 1
-========================================================= */
-
-.hero {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(5,12,8,.18) 0%,
-            rgba(5,12,8,.02) 38%,
-            rgba(5,12,8,.55) 100%
-        ),
-        #09140d;
-}
-
-/*
-    PHOTO
-    Full viewport.
-*/
-
-.hero-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-
-    object-fit: cover;
-
-    /*
-      Slightly above center keeps the head/horns safer
-      than a pure center crop.
-    */
-    object-position: center 34%;
-}
-
-/*
-    Very subtle darkening.
-    It makes the image feel like part of the environment
-    rather than a pasted photograph.
-*/
-
-.hero-shade {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(4,11,7,.42) 0%,
-            rgba(4,11,7,.04) 38%,
-            rgba(4,11,7,.08) 72%,
-            rgba(4,11,7,.34) 100%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(4,11,7,.12) 0%,
-            transparent 38%,
-            rgba(4,11,7,.66) 100%
-        );
-}
-
-/*
-    YOUR REAL FOG VIDEO
-*/
-
-.fog {
-    position: absolute;
-    inset: -8%;
-    width: 116%;
-    height: 116%;
-    z-index: 3;
-
-    object-fit: cover;
-
-    opacity: .26;
-    pointer-events: none;
-
-    mix-blend-mode: screen;
-}
-
-/*
-    Soft atmospheric veil.
-    This is intentionally extremely subtle.
-*/
-
-.atmosphere {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 46%,
-            transparent 35%,
-            rgba(2,8,5,.34) 100%
-        );
-}
-
-/* =========================================================
-   HERO TYPOGRAPHY
-========================================================= */
-
-.hero-content {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding:
-        clamp(28px, 5vw, 70px)
-        clamp(24px, 6vw, 90px)
-        clamp(30px, 5vw, 70px);
-}
-
-.brand {
-    font-size: clamp(34px, 5vw, 66px);
-    line-height: .95;
-    letter-spacing: -.035em;
-    font-weight: 400;
-
-    text-shadow: 0 2px 24px rgba(0,0,0,.3);
-}
-
-.hero-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-}
-
-.hero-description {
-    max-width: 420px;
-}
-
-.hero-description strong {
-    display: block;
-
-    font-size: clamp(17px, 1.7vw, 24px);
-    font-weight: 400;
-    line-height: 1.3;
-
-    margin-bottom: 13px;
-}
-
-.hero-description p {
-    margin: 0;
-
-    font-size: clamp(15px, 1.3vw, 18px);
-    line-height: 1.6;
-
-    color: var(--muted);
-}
-
-.enter {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-
-    color: var(--cream);
-    text-decoration: none;
-
-    font-size: 15px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-}
-
-.enter span {
-    font-size: 20px;
-    transition: transform .35s ease;
-}
-
-.enter:hover {
-    opacity: .72;
-}
-
-.enter:hover span {
-    transform: translateY(5px);
-}
-
-/*
-    This is the actual seam between scenes.
-    It fades the lower edge of scene 1 into the same
-    dark green used at the beginning of scene 2.
-*/
-
-.hero::after {
-    content: "";
-    position: absolute;
-    z-index: 6;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 24vh;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(7,16,12,0),
-            rgba(7,16,12,.72) 58%,
-            #07100c 100%
-        );
-}
-
-
-/* =========================================================
-   SCENE 2
-========================================================= */
-
-.witch {
-    background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(35,65,45,.34),
-            transparent 52%
-        ),
-        #07100c;
-}
-
-/*
-    The same fog continues into the second scene.
-    This makes the transition feel like one environment.
-*/
-
-.witch-fog {
-    position: absolute;
-    inset: -12%;
-
-    width: 124%;
-    height: 124%;
-
-    object-fit: cover;
-
-    opacity: .08;
-
-    pointer-events: none;
-    mix-blend-mode: screen;
-}
-
-.witch-inner {
-    position: relative;
-    z-index: 2;
-
-    min-height: 100svh;
-
-    display: grid;
-    grid-template-columns: minmax(160px, .7fr) minmax(300px, 1.3fr);
-
-    gap: clamp(50px, 9vw, 150px);
-
-    align-items: center;
-
-    width: min(1180px, calc(100% - 48px));
-    margin: auto;
-
-    padding:
-        14vh 0
-        12vh;
-}
-
-/* small title */
-
-.witch-label {
-    align-self: start;
-
-    padding-top: 10px;
-
-    font-size: 13px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-
-    color: rgba(238,233,223,.48);
-}
-
-/* main copy */
-
-.witch-copy {
-    max-width: 700px;
-}
-
-.witch-copy h2 {
-    margin: 0 0 70px;
-
-    font-size: clamp(42px, 6vw, 78px);
-    line-height: .98;
-    font-weight: 400;
-    letter-spacing: -.04em;
-}
-
-.principle {
-    border-top: 1px solid rgba(238,233,223,.14);
-
-    padding: 22px 0 26px;
-
-    display: grid;
-    grid-template-columns: 130px 1fr;
-
-    gap: 30px;
-}
-
-.principle:last-of-type {
-    border-bottom: 1px solid rgba(238,233,223,.14);
-}
-
-.principle-title {
-    font-size: 14px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-
-    color: rgba(238,233,223,.48);
-}
-
-.principle-text {
-    max-width: 470px;
-
-    font-size: clamp(17px, 1.6vw, 22px);
-    line-height: 1.5;
-
-    color: rgba(238,233,223,.82);
-}
-
-.witch-end {
-    margin-top: 65px;
-
-    font-size: clamp(20px, 2vw, 28px);
-    line-height: 1.35;
-
-    color: var(--cream);
-}
-
-.witch-end a {
-    display: inline-block;
-
-    margin-top: 24px;
-
-    color: var(--cream);
-    text-decoration: none;
-
-    font-size: 14px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-
-    opacity: .7;
-
-    transition: opacity .3s ease;
-}
-
-.witch-end a:hover {
-    opacity: 1;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .hero-photo {
-        /*
-          On portrait screens the full-height composition
-          is more important than filling the sides.
-        */
-        object-position: center 28%;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Green Witch — Erotic Artist</title>
+
+  <meta
+    name="description"
+    content="Green Witch. Master of Mathematics. Erotic artist. Nature feeds me. I turn it into desire."
+  >
+
+  <meta property="og:title" content="Green Witch — Erotic Artist">
+  <meta
+    property="og:description"
+    content="Erotic without losing the woman behind it."
+  >
+  <meta
+    property="og:image"
+    content="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-
-    .hero-content {
-        padding:
-            28px
-            24px
-            34px;
-    }
-
-    .brand {
-        font-size: 42px;
-    }
-
-    .hero-bottom {
-        display: block;
-    }
-
-    .hero-description {
-        max-width: 300px;
-    }
-
-    .hero-description strong {
-        font-size: 18px;
-    }
-
-    .hero-description p {
-        font-size: 15px;
-    }
-
-    .enter {
-        margin-top: 30px;
-    }
-
-    .witch-inner {
-        display: block;
-
-        width: min(100% - 48px, 600px);
-
-        padding:
-            15vh 0
-            12vh;
-    }
-
-    .witch-label {
-        margin-bottom: 55px;
-    }
-
-    .witch-copy h2 {
-        margin-bottom: 48px;
-
-        font-size: 48px;
-    }
-
-    .principle {
-        display: block;
-
-        padding: 21px 0 25px;
-    }
-
-    .principle-title {
-        margin-bottom: 12px;
-    }
-
-    .principle-text {
-        font-size: 18px;
-    }
-
-    .witch-end {
-        margin-top: 50px;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
 
     html {
+      scroll-behavior: smooth;
+      background: #101713;
+    }
+
+    body {
+      background: #101713;
+      color: #202321;
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =====================================================
+       SHARED
+    ===================================================== */
+
+    .serif {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .eyebrow,
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      height: 100svh;
+      overflow: hidden;
+
+      display: flex;
+      align-items: flex-end;
+
+      background: #111a15;
+      color: #f7f5ef;
+    }
+
+
+    /*
+      Background atmosphere.
+
+      This is deliberately simple.
+      The image itself remains the main visual.
+    */
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111a15;
+    }
+
+
+    /*
+      The photograph is NOT object-fit: cover.
+
+      It is scaled to fit the entire available height,
+      which prevents the browser from randomly cutting
+      your body/head out of the composition.
+    */
+
+    .hero-photo {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: auto;
+      height: 100%;
+
+      max-width: none;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 1;
+    }
+
+
+    /*
+      On wider screens, the image can become narrower
+      than the viewport. The surrounding space is kept
+      dark rather than cropping the photograph.
+    */
+
+    .hero-background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(12, 19, 15, 0.72) 0%,
+          rgba(12, 19, 15, 0.16) 48%,
+          rgba(12, 19, 15, 0.04) 100%
+        );
+    }
+
+
+    /* =====================================================
+       REAL FOG
+    ===================================================== */
+
+    .fog {
+      position: absolute;
+      inset: -8%;
+
+      width: 116%;
+      height: 116%;
+
+      object-fit: cover;
+
+      z-index: 3;
+
+      opacity: 0.20;
+
+      mix-blend-mode: screen;
+
+      pointer-events: none;
+    }
+
+
+    /*
+      Very soft bottom transition.
+      It is the same colour as the next section.
+      There is no hard line between the two scenes.
+    */
+
+    .hero-transition {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -1px;
+
+      height: 28vh;
+
+      z-index: 4;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(16, 23, 19, 0) 0%,
+          rgba(16, 23, 19, 0.18) 30%,
+          rgba(16, 23, 19, 0.72) 72%,
+          #101713 100%
+        );
+    }
+
+
+    /* =====================================================
+       HERO CONTENT
+    ===================================================== */
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+
+      width: 100%;
+
+      padding:
+        7vw
+        8vw
+        7vw;
+
+      color: #f7f5ef;
+    }
+
+    .eyebrow {
+      margin-bottom: 22px;
+      opacity: 0.78;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(54px, 7vw, 104px);
+      line-height: 0.91;
+
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-subtitle {
+      max-width: 500px;
+
+      margin-top: 27px;
+
+      font-size: 15px;
+      line-height: 1.7;
+
+      color: rgba(247,245,239,0.88);
+    }
+
+
+    /*
+      Button is intentionally clearer than the old one.
+      Still quiet and elegant.
+    */
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      margin-top: 32px;
+
+      min-width: 168px;
+
+      padding: 15px 25px;
+
+      border: 1px solid rgba(247,245,239,0.72);
+      border-radius: 999px;
+
+      background: rgba(10,16,13,0.20);
+
+      color: #f7f5ef;
+
+      font-size: 10px;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+
+      backdrop-filter: blur(4px);
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background: #f7f5ef;
+      border-color: #f7f5ef;
+      color: #202321;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =====================================================
+       SECOND SCENE
+    ===================================================== */
+
+    .inner-world {
+      position: relative;
+
+      min-height: 100svh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at 70% 0%,
+          rgba(55, 74, 62, 0.34),
+          transparent 48%
+        ),
+        #101713;
+
+      color: #f2f0eb;
+    }
+
+
+    /*
+      Fog continues very subtly.
+      This is what helps hide the seam.
+    */
+
+    .inner-fog {
+      position: absolute;
+      inset: -10%;
+
+      width: 120%;
+      height: 120%;
+
+      object-fit: cover;
+
+      opacity: 0.065;
+
+      mix-blend-mode: screen;
+
+      pointer-events: none;
+    }
+
+
+    .world-content {
+      position: relative;
+      z-index: 2;
+
+      min-height: 100svh;
+
+      width: min(1180px, 84vw);
+
+      margin: 0 auto;
+
+      padding:
+        15vh 0
+        12vh;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(190px, 0.55fr)
+        minmax(320px, 1.45fr);
+
+      gap: clamp(60px, 10vw, 150px);
+
+      align-items: start;
+    }
+
+
+    .world-label {
+      padding-top: 7px;
+
+      color: rgba(242,240,235,0.46);
+    }
+
+
+    .world-main {
+      max-width: 720px;
+    }
+
+
+    .world-title {
+      margin-bottom: 70px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(52px, 6vw, 84px);
+      line-height: 0.92;
+
+      font-weight: 400;
+
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================================
+       WORLD TEXT
+    ===================================================== */
+
+    .world-block {
+      padding: 24px 0 27px;
+
+      border-top:
+        1px solid rgba(242,240,235,0.17);
+
+      display: grid;
+
+      grid-template-columns: 130px 1fr;
+
+      gap: 32px;
+    }
+
+    .world-block:last-of-type {
+      border-bottom:
+        1px solid rgba(242,240,235,0.17);
+    }
+
+    .world-block-label {
+      padding-top: 3px;
+
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+
+      color: rgba(242,240,235,0.43);
+    }
+
+    .world-block-text {
+      max-width: 500px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(23px, 2.3vw, 32px);
+      line-height: 1.16;
+
+      color: rgba(242,240,235,0.93);
+    }
+
+
+    /* =====================================================
+       FINAL LINE
+    ===================================================== */
+
+    .world-closing {
+      margin-top: 70px;
+
+      max-width: 600px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(29px, 3.4vw, 48px);
+      line-height: 1.05;
+    }
+
+
+    .world-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+
+      margin-top: 30px;
+
+      padding-bottom: 5px;
+
+      border-bottom:
+        1px solid rgba(242,240,235,0.42);
+
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+
+      color: rgba(242,240,235,0.88);
+
+      transition:
+        opacity 0.3s ease,
+        gap 0.3s ease;
+    }
+
+    .world-link:hover {
+      opacity: 0.65;
+      gap: 15px;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+      .hero {
+        min-height: 100svh;
+        height: 100svh;
+      }
+
+
+      /*
+        On a phone, the portrait image can naturally
+        fill the height without being butchered.
+      */
+
+      .hero-photo {
+        height: 100%;
+        width: auto;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+      }
+
+
+      .hero-content {
+        padding:
+          10vw
+          7vw
+          9vw;
+      }
+
+      .hero h1 {
+        max-width: 370px;
+        font-size: clamp(49px, 14vw, 68px);
+      }
+
+      .hero-subtitle {
+        max-width: 330px;
+        font-size: 14px;
+      }
+
+      .hero-button {
+        margin-top: 28px;
+        min-width: 175px;
+        padding: 15px 23px;
+      }
+
+
+      .world-content {
+        width: 86vw;
+
+        display: block;
+
+        padding:
+          14vh 0
+          11vh;
+      }
+
+      .world-label {
+        margin-bottom: 52px;
+      }
+
+      .world-title {
+        margin-bottom: 50px;
+
+        font-size: 53px;
+      }
+
+      .world-block {
+        display: block;
+
+        padding: 22px 0 25px;
+      }
+
+      .world-block-label {
+        margin-bottom: 12px;
+      }
+
+      .world-block-text {
+        font-size: 25px;
+      }
+
+      .world-closing {
+        margin-top: 52px;
+        font-size: 34px;
+      }
+
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
         scroll-behavior: auto;
-    }
+      }
 
-    .fog,
-    .witch-fog {
+      .fog,
+      .inner-fog {
         display: none;
+      }
+
+      .hero-button,
+      .world-link {
+        transition: none;
+      }
     }
 
-    .enter,
-    .enter span {
-        transition: none;
-    }
-}
-</style>
+  </style>
 </head>
 
 
 <body>
 
-<!-- =======================================================
-     SCENE 1 — THE FOREST
-======================================================= -->
 
-<section class="hero" id="home">
+  <!-- ===================================================
+       SCENE 01 — HERO
+  ==================================================== -->
 
-    <img
+  <section class="hero">
+
+    <div class="hero-background">
+
+      <img
         class="hero-photo"
         src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
-        alt="Curly Witch"
-    >
+        alt="Green Witch"
+      >
 
-    <video
+      <video
         class="fog"
         autoplay
         muted
@@ -535,168 +632,167 @@ section {
         playsinline
         preload="auto"
         aria-hidden="true"
-    >
+      >
         <source
-            src="126139-735667150.mp4"
-            type="video/mp4"
+          src="126139-735667150.mp4"
+          type="video/mp4"
         >
-    </video>
+      </video>
 
-    <div class="hero-shade"></div>
-    <div class="atmosphere"></div>
+    </div>
+
 
     <div class="hero-content">
 
-        <div class="brand">
-            Curly Witch.
-        </div>
+      <div class="eyebrow">
+        Green Witch · Erotic Artist
+      </div>
 
-        <div class="hero-bottom">
+      <h1>
+        Erotic without losing
+        the woman behind it.
+      </h1>
 
-            <div class="hero-description">
+      <p class="hero-subtitle">
+        Master of Mathematics. Erotic artist.
+        Nature feeds me. I turn it into desire.
+      </p>
 
-                <strong>
-                    Master of Mathematics.<br>
-                    Erotic artist.
-                </strong>
-
-                <p>
-                    Nature feeds me.
-                    I turn it into desire.
-                </p>
-
-            </div>
-
-            <a
-                class="enter"
-                href="#witch"
-            >
-                Come closer
-                <span>↓</span>
-            </a>
-
-        </div>
+      <a
+        class="hero-button"
+        href="https://onlyfans.com/curly.witch/c3"
+        target="_blank"
+        rel="noopener"
+      >
+        Come closer →
+      </a>
 
     </div>
 
-</section>
+
+    <div class="hero-transition"></div>
+
+  </section>
 
 
-<!-- =======================================================
-     SCENE 2 — THE WITCH
-======================================================= -->
 
-<section class="witch" id="witch">
+  <!-- ===================================================
+       SCENE 02 — INNER WORLD
+  ==================================================== -->
+
+  <section class="inner-world" id="world">
 
     <video
-        class="witch-fog"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true"
+      class="inner-fog"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
     >
-        <source
-            src="126139-735667150.mp4"
-            type="video/mp4"
-        >
+      <source
+        src="126139-735667150.mp4"
+        type="video/mp4"
+      >
     </video>
 
 
-    <div class="witch-inner">
+    <div class="world-content">
 
-        <div class="witch-label">
-            The Witch
+      <div class="world-label section-label">
+        Inside my world
+      </div>
+
+
+      <div class="world-main">
+
+        <h2 class="world-title">
+          Soft face.<br>
+          Sharp boundaries.
+        </h2>
+
+
+        <div class="world-block">
+
+          <div class="world-block-label">
+            Nature
+          </div>
+
+          <div class="world-block-text">
+            Nature feeds me.
+            I bring some of that wildness
+            into everything I create.
+          </div>
+
+        </div>
+
+
+        <div class="world-block">
+
+          <div class="world-block-label">
+            Mathematics
+          </div>
+
+          <div class="world-block-text">
+            I notice patterns,
+            tension and tiny changes.
+            Even desire has its structure.
+          </div>
+
         </div>
 
 
-        <div class="witch-copy">
+        <div class="world-block">
 
-            <h2>
-                Soft face.<br>
-                Sharp boundaries.
-            </h2>
+          <div class="world-block-label">
+            Eros
+          </div>
 
-
-            <div class="principle">
-
-                <div class="principle-title">
-                    Nature
-                </div>
-
-                <div class="principle-text">
-                    I don't imitate the wild.
-                    I live close enough to it
-                    to understand what it does to me.
-                </div>
-
-            </div>
-
-
-            <div class="principle">
-
-                <div class="principle-title">
-                    Mathematics
-                </div>
-
-                <div class="principle-text">
-                    There is structure beneath
-                    everything beautiful.
-                    Even desire has its geometry.
-                </div>
-
-            </div>
-
-
-            <div class="principle">
-
-                <div class="principle-title">
-                    Eros
-                </div>
-
-                <div class="principle-text">
-                    Slow attention.
-                    Curiosity.
-                    Tension.
-                    The pleasure of not revealing everything at once.
-                </div>
-
-            </div>
-
-
-            <div class="principle">
-
-                <div class="principle-title">
-                    Boundaries
-                </div>
-
-                <div class="principle-text">
-                    I choose who comes closer.
-                    Intimacy means more when it is chosen,
-                    not demanded.
-                </div>
-
-            </div>
-
-
-            <div class="witch-end">
-
-                Nothing here is made for everyone.
-
-                <br>
-
-                <a href="#home">
-                    Back to the forest ↑
-                </a>
-
-            </div>
+          <div class="world-block-text">
+            Slow attention.
+            Curiosity.
+            The pleasure of not revealing
+            everything at once.
+          </div>
 
         </div>
+
+
+        <div class="world-block">
+
+          <div class="world-block-label">
+            Boundaries
+          </div>
+
+          <div class="world-block-text">
+            Warmth does not mean access.
+            I choose who gets closer.
+          </div>
+
+        </div>
+
+
+        <div class="world-closing">
+          Nothing here is made for everyone.
+
+          <br>
+
+          <a
+            class="world-link"
+            href="https://onlyfans.com/curly.witch/c3"
+            target="_blank"
+            rel="noopener"
+          >
+            Enter my world →
+          </a>
+        </div>
+
+      </div>
 
     </div>
 
-</section>
+  </section>
 
 
 </body>
