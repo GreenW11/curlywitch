@@ -2,51 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Green Witch — Erotic Artist</title>
 
-  <meta
-    name="description"
-    content="Green Witch. Master of Mathematics. Erotic artist. Nature feeds me. I turn it into desire."
-  >
+  <meta name="description" content="Green Witch. Master of Mathematics. Erotic artist. Nature feeds me. I turn it into desire.">
 
-  <link rel="canonical" href="https://curlywitch.art/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
   <meta property="og:title" content="Green Witch — Erotic Artist">
-  <meta
-    property="og:description"
-    content="Nature feeds me. I turn it into desire."
-  >
-  <meta property="og:url" content="https://curlywitch.art/">
-  <meta property="og:image" content="https://curlywitch.art/images/og.jpg">
+  <meta property="og:description" content="Erotic without losing the woman behind it.">
+  <meta property="og:image" content="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
 
-    :root {
-      --ink: #101318;
-      --ink-soft: #171b22;
-      --paper: #e9e6df;
-      --paper-soft: #d8d5cf;
-      --mist: #aeb8c7;
-      --blue: #788cae;
-      --line: rgba(233,230,223,.18);
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -54,17 +30,10 @@
     }
 
     body {
-      margin: 0;
-      background: var(--ink);
-      color: var(--paper);
+      background: #f2f0eb;
+      color: #202321;
       font-family: "Inter", sans-serif;
       font-weight: 300;
-      line-height: 1.6;
-    }
-
-    img {
-      display: block;
-      width: 100%;
     }
 
     a {
@@ -72,629 +41,408 @@
       text-decoration: none;
     }
 
-    /* -------------------------
-       TYPOGRAPHY
-    ------------------------- */
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 400;
-      margin: 0;
-    }
-
-    h1 {
-      font-size: clamp(4.5rem, 15vw, 11rem);
-      line-height: .78;
-      letter-spacing: -.055em;
-    }
-
-    h2 {
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      line-height: .9;
-      letter-spacing: -.035em;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .eyebrow {
-      font-size: .65rem;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      color: var(--mist);
-    }
-
-    /* -------------------------
-       LAYOUT
-    ------------------------- */
-
-    .container {
-      width: min(1180px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    section {
-      padding: 140px 0;
-    }
-
-    /* -------------------------
-       HEADER
-    ------------------------- */
-
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      padding: 28px 0;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.4rem;
-      letter-spacing: .08em;
-    }
-
-    .nav-link {
-      font-size: .65rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      opacity: .75;
-      transition: opacity .3s ease;
-    }
-
-    .nav-link:hover {
-      opacity: 1;
-    }
-
-    /* -------------------------
+    /* =========================
        HERO
-    ------------------------- */
+    ========================= */
 
     .hero {
-      min-height: 100vh;
-      padding: 0;
       position: relative;
+      min-height: 100svh;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
-    }
 
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      background:
+      background-image:
         linear-gradient(
           to top,
-          rgba(10,12,16,.94) 0%,
-          rgba(10,12,16,.35) 55%,
-          rgba(10,12,16,.15) 100%
+          rgba(15, 18, 16, 0.72) 0%,
+          rgba(15, 18, 16, 0.18) 55%,
+          rgba(15, 18, 16, 0.08) 100%
         ),
-        url("images/hero.jpg") center center / cover no-repeat;
+        url("1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg");
+
+      background-size: cover;
+      background-position: center;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
       width: 100%;
-      padding-bottom: 72px;
+      padding: 8vw;
+      color: #f7f5ef;
     }
 
-    .hero-topline {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 30px;
-      margin-bottom: 26px;
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      opacity: 0.82;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(52px, 8vw, 110px);
+      line-height: 0.9;
+      font-weight: 400;
+      letter-spacing: -0.035em;
     }
 
     .hero-subtitle {
-      max-width: 280px;
-      font-size: .85rem;
-      line-height: 1.6;
-      color: var(--mist);
+      max-width: 500px;
+      margin-top: 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.9;
     }
 
-    .hero-title {
-      max-width: 1000px;
-    }
-
-    .hero-title span {
-      display: block;
-    }
-
-    .hero-title .second {
-      padding-left: 10vw;
-    }
-
-    .hero-bottom {
-      margin-top: 55px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .hero-note {
-      font-size: .7rem;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: var(--mist);
-    }
-
-    /* -------------------------
-       BUTTON
-    ------------------------- */
-
-    .button {
+    .hero-button {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 205px;
-      padding: 16px 24px;
-      border: 1px solid rgba(233,230,223,.55);
-      font-size: .65rem;
-      letter-spacing: .2em;
+      margin-top: 36px;
+      padding: 15px 25px;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 100px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      transition:
-        background .3s ease,
-        color .3s ease,
-        border-color .3s ease;
+      transition: all 0.3s ease;
     }
 
-    .button:hover {
-      background: var(--paper);
-      color: var(--ink);
-      border-color: var(--paper);
+    .hero-button:hover {
+      background: #f7f5ef;
+      color: #202321;
     }
 
-    /* -------------------------
+    /* =========================
        INTRO
-    ------------------------- */
+    ========================= */
 
     .intro {
-      background: var(--paper);
-      color: var(--ink);
+      padding: 14vw 9vw;
+      background: #f2f0eb;
     }
 
-    .intro-grid {
+    .intro-inner {
+      max-width: 900px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 35px;
+    }
+
+    .intro h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+    }
+
+    .intro p {
+      max-width: 590px;
+      margin-top: 42px;
+      font-size: 16px;
+      line-height: 1.85;
+      color: #555953;
+    }
+
+    /* =========================
+       WORLD
+    ========================= */
+
+    .world {
+      padding: 12vw 9vw;
+      background: #28312b;
+      color: #f2f0eb;
+    }
+
+    .world-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 90px;
+      grid-template-columns: 1fr 1fr;
+      gap: 9vw;
       align-items: start;
     }
 
-    .intro-title {
-      font-size: clamp(3.2rem, 6vw, 6rem);
-    }
-
-    .intro-copy {
-      max-width: 590px;
-      font-size: clamp(1.15rem, 2vw, 1.55rem);
-      line-height: 1.45;
-    }
-
-    .intro-copy em {
+    .world h2 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.2em;
-    }
-
-    /* -------------------------
-       PORTRAIT
-    ------------------------- */
-
-    .portrait {
-      background: var(--paper);
-      color: var(--ink);
-      padding-top: 0;
-    }
-
-    .portrait-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 80px;
-      align-items: end;
-    }
-
-    .portrait-image {
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      filter: saturate(.78);
-    }
-
-    .portrait-copy {
-      padding-bottom: 20px;
-    }
-
-    .portrait-copy h2 {
-      margin-bottom: 30px;
-    }
-
-    .portrait-copy p {
-      max-width: 400px;
-      color: #4e535a;
-      font-size: .95rem;
-    }
-
-    .portrait-signature {
-      margin-top: 70px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.3rem;
-      font-style: italic;
-    }
-
-    /* -------------------------
-       WORLD
-    ------------------------- */
-
-    .world {
-      background: var(--ink-soft);
-    }
-
-    .world-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      margin-bottom: 70px;
-    }
-
-    .world-intro {
-      max-width: 300px;
-      color: var(--mist);
-      font-size: .85rem;
+      font-size: clamp(55px, 7vw, 100px);
+      line-height: 0.9;
+      font-weight: 400;
     }
 
     .world-list {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(242,240,235,0.25);
     }
 
     .world-item {
-      display: grid;
-      grid-template-columns: 90px 1fr auto;
-      gap: 35px;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(242,240,235,0.25);
     }
 
-    .world-number {
-      color: var(--mist);
-      font-size: .65rem;
-      letter-spacing: .16em;
+    .world-item span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 8px;
     }
 
-    .world-name {
+    .world-item h3 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: 30px;
+      font-weight: 400;
     }
 
-    .world-arrow {
-      color: var(--mist);
-      font-size: 1.2rem;
-    }
-
-    /* -------------------------
-       STATEMENT
-    ------------------------- */
-
-    .statement {
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      background: var(--blue);
-      color: var(--ink);
-    }
-
-    .statement-inner {
-      max-width: 950px;
-    }
-
-    .statement h2 {
-      font-size: clamp(4rem, 9vw, 9rem);
-    }
-
-    .statement p {
-      margin-top: 50px;
-      max-width: 500px;
-      font-size: .95rem;
-    }
-
-    /* -------------------------
+    /* =========================
        MATHEMATICS
-    ------------------------- */
+    ========================= */
 
-    .mathematics {
-      background: var(--ink);
+    .math {
+      padding: 14vw 9vw;
+      background: #dfe1e4;
     }
 
     .math-grid {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 100px;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 10vw;
       align-items: center;
     }
 
-    .math-symbol {
+    .formula {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(9rem, 22vw, 20rem);
-      line-height: .6;
-      color: var(--blue);
-      opacity: .7;
+      font-size: clamp(80px, 13vw, 190px);
+      font-weight: 400;
+      line-height: 1;
+      opacity: 0.75;
     }
 
-    .math-copy h2 {
-      margin-bottom: 30px;
+    .math h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(44px, 6vw, 80px);
+      line-height: 0.95;
+      font-weight: 400;
     }
 
-    .math-copy p {
-      max-width: 500px;
-      color: var(--mist);
-      font-size: 1rem;
+    .math p {
+      max-width: 550px;
+      margin-top: 30px;
+      line-height: 1.8;
+      color: #555b60;
     }
 
-    /* -------------------------
+    /* =========================
        BOUNDARIES
-    ------------------------- */
+    ========================= */
 
     .boundaries {
-      background: var(--paper);
-      color: var(--ink);
+      padding: 13vw 9vw;
+      background: #f2f0eb;
     }
 
-    .boundaries-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
+    .boundary-line {
+      max-width: 1000px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(45px, 7vw, 90px);
+      line-height: 0.95;
+      font-weight: 400;
     }
 
-    .boundaries h2 {
-      max-width: 600px;
+    .boundary-small {
+      max-width: 500px;
+      margin-top: 45px;
+      margin-left: auto;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666a66;
     }
 
-    .boundary-copy {
-      max-width: 430px;
-      padding-top: 15px;
-    }
+    /* =========================
+       QUOTE
+    ========================= */
 
-    .boundary-copy p {
-      color: #53565b;
-      margin-bottom: 30px;
-    }
-
-    /* -------------------------
-       FINAL CTA
-    ------------------------- */
-
-    .final {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .quote {
+      padding: 12vw 9vw;
+      background: #c9ced3;
       text-align: center;
-      background:
-        linear-gradient(
-          rgba(12,15,20,.65),
-          rgba(12,15,20,.82)
-        ),
-        url("images/hero.jpg") center / cover no-repeat;
     }
 
-    .final h2 {
-      font-size: clamp(4rem, 10vw, 10rem);
+    .quote blockquote {
+      max-width: 850px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(35px, 5vw, 65px);
+      line-height: 1;
+      font-weight: 400;
     }
 
-    .final p {
-      margin: 30px auto 45px;
-      max-width: 440px;
-      color: var(--mist);
+    .quote small {
+      display: block;
+      margin-top: 30px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
     }
 
-    /* -------------------------
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      min-height: 75vh;
+      padding: 12vw 9vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #1e2420;
+      color: #f4f1ea;
+    }
+
+    .cta h2 {
+      max-width: 850px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(60px, 9vw, 125px);
+      line-height: 0.86;
+      font-weight: 400;
+    }
+
+    .cta p {
+      max-width: 450px;
+      margin-top: 35px;
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    .cta-button {
+      align-self: flex-start;
+      margin-top: 40px;
+      padding: 17px 28px;
+      border: 1px solid rgba(244,241,234,0.5);
+      border-radius: 100px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #f4f1ea;
+      color: #1e2420;
+    }
+
+    /* =========================
        FOOTER
-    ------------------------- */
+    ========================= */
 
     footer {
-      background: #0b0d11;
-      padding: 35px 0;
-    }
-
-    .footer-inner {
+      padding: 30px 9vw;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .footer-brand {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.3rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-    }
-
-    .footer-links a {
-      font-size: .6rem;
+      gap: 20px;
+      background: #1e2420;
+      color: #f4f1ea;
+      border-top: 1px solid rgba(244,241,234,0.15);
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--mist);
+      opacity: 0.65;
     }
 
-    /* -------------------------
+    footer div {
+      display: flex;
+      gap: 25px;
+    }
+
+    /* =========================
        MOBILE
-    ------------------------- */
+    ========================= */
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
 
-      .container {
-        width: min(100% - 32px, 1180px);
-      }
-
-      section {
-        padding: 90px 0;
-      }
-
-      header {
-        padding: 20px 0;
+      .hero {
+        min-height: 92svh;
+        background-position: 58% center;
       }
 
       .hero-content {
-        padding-bottom: 42px;
+        padding: 12vw 7vw;
       }
 
-      .hero-topline {
-        display: block;
+      .hero h1 {
+        font-size: 54px;
       }
 
-      .hero-subtitle {
-        margin-top: 18px;
+      .intro,
+      .world,
+      .math,
+      .boundaries,
+      .quote,
+      .cta {
+        padding: 22vw 7vw;
       }
 
-      .hero-title .second {
-        padding-left: 8vw;
-      }
-
-      .hero-bottom {
-        display: block;
-        margin-top: 35px;
-      }
-
-      .hero-note {
-        margin-bottom: 25px;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .intro-grid,
-      .portrait-grid,
-      .math-grid,
-      .boundaries-grid {
+      .world-grid,
+      .math-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 55px;
       }
 
-      .portrait-grid {
-        gap: 40px;
+      .formula {
+        font-size: 100px;
       }
 
-      .world-header {
-        display: block;
-        margin-bottom: 45px;
+      .boundary-small {
+        margin-left: 0;
       }
 
-      .world-intro {
-        margin-top: 25px;
+      footer {
+        padding: 25px 7vw;
+        flex-direction: column;
       }
 
-      .world-item {
-        grid-template-columns: 45px 1fr auto;
-        gap: 15px;
-        padding: 22px 0;
-      }
-
-      .world-name {
-        font-size: 2rem;
-      }
-
-      .math-symbol {
-        font-size: 10rem;
-      }
-
-      .statement {
-        min-height: 65vh;
-      }
-
-      .footer-inner {
-        display: block;
-      }
-
-      .footer-links {
-        margin-top: 20px;
-      }
     }
 
   </style>
 </head>
 
+
 <body>
-
-  <!-- HEADER -->
-
-  <header>
-    <div class="container nav">
-
-      <a href="/" class="brand">
-        GW
-      </a>
-
-      <a
-        href="https://onlyfans.com/curly.witch/c3"
-        class="nav-link tracked-link"
-        data-cta="nav"
-      >
-        Enter
-      </a>
-
-    </div>
-  </header>
-
 
   <!-- HERO -->
 
   <section class="hero">
 
-    <div class="hero-image"></div>
+    <div class="hero-content">
 
-    <div class="container hero-content">
-
-      <div class="hero-topline">
-
-        <div class="eyebrow">
-          Green Witch · Erotic Artist
-        </div>
-
-        <p class="hero-subtitle">
-          Master of Mathematics.<br>
-          Nature feeds me. I turn it into desire.
-        </p>
-
+      <div class="eyebrow">
+        Green Witch · Erotic Artist
       </div>
 
-      <h1 class="hero-title">
-        <span>Green</span>
-        <span class="second">Witch.</span>
+      <h1>
+        Erotic without losing the woman behind it.
       </h1>
 
-      <div class="hero-bottom">
+      <p class="hero-subtitle">
+        Master of Mathematics. Erotic artist.
+        Nature feeds me. I turn it into desire.
+      </p>
 
-        <div class="hero-note">
-          A private world of art, desire & connection.
-        </div>
-
-        <a
-          href="https://onlyfans.com/curly.witch/c3"
-          class="button tracked-link"
-          data-cta="hero"
-        >
-          Enter my forest →
-        </a>
-
-      </div>
+      <a
+        class="hero-button"
+        href="https://onlyfans.com/curly.witch/c3"
+        target="_blank"
+        rel="noopener"
+      >
+        Come closer →
+      </a>
 
     </div>
 
@@ -705,68 +453,22 @@
 
   <section class="intro">
 
-    <div class="container intro-grid">
+    <div class="intro-inner">
 
-      <div>
-
-        <div class="eyebrow">
-          01 — The woman behind it
-        </div>
-
-        <h2 class="intro-title">
-          Erotic without losing the woman behind it.
-        </h2>
-
+      <div class="section-label">
+        You found me
       </div>
 
-      <div class="intro-copy">
+      <h2>
+        Not everything beautiful
+        needs to shout.
+      </h2>
 
-        <p>
-          I create for people who want more than a stream of images.
-          <em>Desire, atmosphere, imagination, attention.</em>
-          A world that feels personal rather than produced.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PORTRAIT -->
-
-  <section class="portrait">
-
-    <div class="container portrait-grid">
-
-      <img
-        src="images/portrait.jpg"
-        alt="Green Witch"
-        class="portrait-image"
-      >
-
-      <div class="portrait-copy">
-
-        <div class="eyebrow">
-          02 — Behind the veil
-        </div>
-
-        <h2>
-          Soft face.<br>
-          Sharp boundaries.
-        </h2>
-
-        <p>
-          I am interested in intimacy without performance,
-          sensuality without noise, and beauty that still feels human.
-        </p>
-
-        <div class="portrait-signature">
-          Green Witch
-        </div>
-
-      </div>
+      <p>
+        I make sensual art around the woman behind the image —
+        her body, voice, humour, curiosity, rituals and contradictions.
+        Slow things. Real things. Things made with attention.
+      </p>
 
     </div>
 
@@ -777,80 +479,47 @@
 
   <section class="world">
 
-    <div class="container">
+    <div class="world-grid">
 
-      <div class="world-header">
-
-        <div>
-
-          <div class="eyebrow">
-            03 — Inside my world
-          </div>
-
-          <h2>
-            The forest
-          </h2>
-
+      <div>
+        <div class="section-label">
+          Inside my world
         </div>
 
-        <p class="world-intro">
-          Different moods. Different rituals.
-          Always personal.
-        </p>
-
+        <h2>
+          Come<br>
+          closer.
+        </h2>
       </div>
 
       <div class="world-list">
 
         <div class="world-item">
-          <div class="world-number">01</div>
-          <div class="world-name">The Tease</div>
-          <div class="world-arrow">↗</div>
+          <span>01</span>
+          <h3>The Tease</h3>
         </div>
 
         <div class="world-item">
-          <div class="world-number">02</div>
-          <div class="world-name">The Ritual</div>
-          <div class="world-arrow">↗</div>
+          <span>02</span>
+          <h3>The Ritual</h3>
         </div>
 
         <div class="world-item">
-          <div class="world-number">03</div>
-          <div class="world-name">The Private Fantasy</div>
-          <div class="world-arrow">↗</div>
+          <span>03</span>
+          <h3>The Private Fantasy</h3>
         </div>
 
         <div class="world-item">
-          <div class="world-number">04</div>
-          <div class="world-name">The Game</div>
-          <div class="world-arrow">↗</div>
+          <span>04</span>
+          <h3>The Game</h3>
+        </div>
+
+        <div class="world-item">
+          <span>05</span>
+          <h3>The Voice</h3>
         </div>
 
       </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STATEMENT -->
-
-  <section class="statement">
-
-    <div class="container statement-inner">
-
-      <div class="eyebrow">
-        04 — Philosophy
-      </div>
-
-      <h2>
-        Desire doesn't need to be exhausted.
-      </h2>
-
-      <p>
-        Sometimes the most powerful thing is what remains
-        just beyond reach.
-      </p>
 
     </div>
 
@@ -859,29 +528,31 @@
 
   <!-- MATHEMATICS -->
 
-  <section class="mathematics">
+  <section class="math">
 
-    <div class="container math-grid">
+    <div class="math-grid">
 
-      <div class="math-symbol">
+      <div class="formula">
         ∑
       </div>
 
-      <div class="math-copy">
+      <div>
 
-        <div class="eyebrow">
-          05 — The unexpected part
+        <div class="section-label">
+          The woman behind it
         </div>
 
         <h2>
           Yes.<br>
-          I'm actually a mathematician.
+          I'm actually<br>
+          a mathematician.
         </h2>
 
         <p>
           Years of mathematics taught me to notice patterns,
-          structure and tiny deviations.
-          I brought that way of seeing into everything else.
+          structures and tiny changes most people overlook.
+          I think that way about everything — including beauty,
+          movement, tension and desire.
         </p>
 
       </div>
@@ -895,69 +566,63 @@
 
   <section class="boundaries">
 
-    <div class="container boundaries-grid">
-
-      <div>
-
-        <div class="eyebrow">
-          06 — The rules
-        </div>
-
-        <h2>
-          Warmth is not access.
-        </h2>
-
-      </div>
-
-      <div class="boundary-copy">
-
-        <p>
-          I choose who enters my world.
-          I value genuine connection, imagination
-          and respect.
-        </p>
-
-        <p>
-          No conveyor belt.
-          No pretending.
-          No need to be everything for everyone.
-        </p>
-
-      </div>
-
+    <div class="section-label">
+      A small rule
     </div>
+
+    <div class="boundary-line">
+      Softness is not access.
+      Warmth is not permission.
+    </div>
+
+    <p class="boundary-small">
+      I like closeness when it is mutual.
+      I choose who gets closer.
+      That is part of the experience.
+    </p>
 
   </section>
 
 
-  <!-- FINAL CTA -->
+  <!-- QUOTE -->
 
-  <section class="final">
+  <section class="quote">
 
-    <div class="container">
+    <blockquote>
+      “Erotic without losing the woman behind it.”
+    </blockquote>
 
-      <div class="eyebrow">
-        07 — Come closer
-      </div>
+    <small>
+      Green Witch
+    </small>
 
-      <h2>
-        Enter my forest.
-      </h2>
+  </section>
 
-      <p>
-        If you are curious enough to look closer,
-        there is more waiting inside.
-      </p>
 
-      <a
-        href="https://onlyfans.com/curly.witch/c3"
-        class="button tracked-link"
-        data-cta="final"
-      >
-        Step inside →
-      </a>
+  <!-- CTA -->
 
+  <section class="cta">
+
+    <div class="section-label">
+      If you want more
     </div>
+
+    <h2>
+      Come closer.
+    </h2>
+
+    <p>
+      The rest of my world lives somewhere a little more private.
+    </p>
+
+    <a
+      class="cta-button"
+      href="https://onlyfans.com/curly.witch/c3"
+      target="_blank"
+      rel="noopener"
+    >
+      Enter my world →
+    </a>
 
   </section>
 
@@ -966,167 +631,30 @@
 
   <footer>
 
-    <div class="container footer-inner">
+    <span>
+      Green Witch © 2026
+    </span>
 
-      <div class="footer-brand">
-        Green Witch
-      </div>
+    <div>
+      <a
+        href="https://x.com/Curly_witchh"
+        target="_blank"
+        rel="noopener"
+      >
+        X
+      </a>
 
-      <div class="footer-links">
-
-        <a
-          href="https://x.com/Curly_witchh"
-          target="_blank"
-          rel="noopener"
-        >
-          X
-        </a>
-
-        <a
-          href="https://www.reddit.com/"
-          target="_blank"
-          rel="noopener"
-        >
-          Reddit
-        </a>
-
-        <a
-          href="https://onlyfans.com/curly.witch/c3"
-          class="tracked-link"
-          data-cta="footer"
-        >
-          OnlyFans
-        </a>
-
-      </div>
-
+      <a
+        href="https://onlyfans.com/curly.witch/c3"
+        target="_blank"
+        rel="noopener"
+      >
+        OnlyFans
+      </a>
     </div>
 
   </footer>
 
-
-  <!-- TRACKING -->
-
-  <script>
-
-    const OF_URL = "https://onlyfans.com/curly.witch/c3";
-
-    const params = new URLSearchParams(window.location.search);
-
-    const source = params.get("utm_source");
-    const medium = params.get("utm_medium");
-    const campaign = params.get("utm_campaign");
-    const content = params.get("utm_content");
-
-    if (source || medium || campaign || content) {
-
-      localStorage.setItem(
-        "gw_attribution",
-        JSON.stringify({
-          source,
-          medium,
-          campaign,
-          content,
-          timestamp: Date.now()
-        })
-      );
-
-    }
-
-    function getAttribution() {
-
-      try {
-
-        const stored =
-          JSON.parse(
-            localStorage.getItem("gw_attribution")
-          );
-
-        if (!stored) return null;
-
-        const age =
-          Date.now() - stored.timestamp;
-
-        const thirtyDays =
-          30 * 24 * 60 * 60 * 1000;
-
-        if (age > thirtyDays) {
-
-          localStorage.removeItem("gw_attribution");
-
-          return null;
-
-        }
-
-        return stored;
-
-      } catch {
-
-        return null;
-
-      }
-
-    }
-
-
-    document
-      .querySelectorAll(".tracked-link")
-      .forEach(link => {
-
-        link.addEventListener("click", function () {
-
-          const attribution = getAttribution();
-
-          const url =
-            new URL(OF_URL);
-
-          if (attribution) {
-
-            if (attribution.source)
-              url.searchParams.set(
-                "utm_source",
-                attribution.source
-              );
-
-            if (attribution.medium)
-              url.searchParams.set(
-                "utm_medium",
-                attribution.medium
-              );
-
-            if (attribution.campaign)
-              url.searchParams.set(
-                "utm_campaign",
-                attribution.campaign
-              );
-
-            if (attribution.content)
-              url.searchParams.set(
-                "utm_content",
-                attribution.content
-              );
-
-          }
-
-          const cta =
-            this.dataset.cta;
-
-          if (cta) {
-
-            url.searchParams.set(
-              "gw_cta",
-              cta
-            );
-
-          }
-
-          this.href = url.toString();
-
-        });
-
-      });
-
-  </script>
 
 </body>
 </html>
