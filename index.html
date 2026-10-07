@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Green Witch — Erotic Artist</title>
-  <meta
-    name="description"
-    content="Green Witch. Master of Mathematics. Erotic artist."
-  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
     :root {
-      --cream: #f7f5ef;
-      --paper: #f2f0eb;
-      --ink: #202321;
-      --forest: #101713;
-      --muted: rgba(247, 245, 239, 0.72);
-      --line: rgba(247, 245, 239, 0.22);
+      --forest: #111914;
+      --forest-deep: #0c120e;
+      --cream: #f2eee5;
+      --cream-soft: rgba(242, 238, 229, .72);
+      --green: #899b82;
+      --line: rgba(242, 238, 229, .18);
     }
 
     * {
@@ -38,12 +35,12 @@
     }
 
     body {
-      background: var(--forest);
-      color: var(--ink);
+      background: var(--forest-deep);
+      color: var(--cream);
       font-family: "Inter", sans-serif;
       font-weight: 300;
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -51,300 +48,433 @@
       text-decoration: none;
     }
 
-    /* =========================
+    /* =========================================
        HERO
-    ========================= */
+    ========================================= */
 
     .hero {
       position: relative;
       min-height: 100svh;
       overflow: hidden;
-      background: var(--forest);
+      background: var(--forest-deep);
       isolation: isolate;
     }
 
     /*
-      The photograph stays uncropped vertically.
-      The dark background fills whatever space remains
-      on the sides instead of cutting the body.
+      The image is NOT background-size: cover.
+      It remains proportional, so the face isn't cropped.
     */
 
-    .hero-photo {
+    .hero-image-wrap {
       position: absolute;
       z-index: 1;
-      top: 50%;
-      left: 50%;
-      height: 100%;
-      width: auto;
-      max-width: none;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: var(--forest-deep);
+    }
+
+    .hero-image {
       display: block;
+
+      width: auto;
+      height: 100%;
+      max-width: none;
+
+      object-fit: contain;
+
       user-select: none;
       pointer-events: none;
+
+      animation: imageAppear 1.5s cubic-bezier(.22,1,.36,1) both;
     }
 
     /*
-      Darkening is concentrated at the bottom,
-      so the photograph remains natural.
+      Dark edge treatment.
+      This doesn't crop the photograph.
     */
 
-    .hero::after {
+    .hero-image-wrap::after {
       content: "";
       position: absolute;
-      z-index: 2;
       inset: 0;
+      pointer-events: none;
+
       background:
         linear-gradient(
+          90deg,
+          rgba(12,18,14,.55) 0%,
+          rgba(12,18,14,0) 23%,
+          rgba(12,18,14,0) 77%,
+          rgba(12,18,14,.55) 100%
+        ),
+        linear-gradient(
           to top,
-          rgba(15, 18, 16, 0.88) 0%,
-          rgba(15, 18, 16, 0.38) 22%,
-          rgba(15, 18, 16, 0.08) 55%,
-          rgba(15, 18, 16, 0.02) 100%
+          rgba(12,18,14,.94) 0%,
+          rgba(12,18,14,.30) 23%,
+          rgba(12,18,14,.03) 58%,
+          transparent 100%
         );
-      pointer-events: none;
     }
 
-    /*
-      Very soft continuation into the second scene.
-      No visible horizontal seam.
-    */
+    /* =========================================
+       GREEN WITCH MICRO DETAIL
+    ========================================= */
 
-    .hero-transition {
+    .botanical-mark {
       position: absolute;
-      z-index: 3;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 30vh;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(16, 23, 19, 0.55) 55%,
-        var(--forest) 100%
-      );
-      pointer-events: none;
+      z-index: 5;
+      top: 7vw;
+      right: 7vw;
+
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      color: rgba(242,238,229,.62);
+
+      font-family: "Bodoni Moda", serif;
+      font-size: 12px;
+      font-style: italic;
+      letter-spacing: .05em;
+
+      opacity: 0;
+      animation: softReveal 1.2s .8s ease forwards;
     }
+
+    .botanical-mark::before {
+      content: "✦";
+      color: var(--green);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 13px;
+      animation: starBreath 3.5s ease-in-out infinite;
+    }
+
+    /* =========================================
+       HERO CONTENT
+    ========================================= */
 
     .hero-content {
       position: relative;
-      z-index: 5;
+      z-index: 6;
+
       min-height: 100svh;
+
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-start;
+
       padding: 8vw;
       padding-bottom: 9vw;
+
       color: var(--cream);
     }
 
-    .hero-content > * {
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 21px;
+
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+
+      color: rgba(242,238,229,.78);
+
       opacity: 0;
       transform: translateY(14px);
-      animation: heroReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+      animation:
+        textReveal .9s .15s cubic-bezier(.22,1,.36,1) forwards;
     }
 
-    .eyebrow {
-      margin-bottom: 20px;
-      font-size: 10px;
+    .eyebrow::before {
+      content: "✦";
+
+      color: var(--green);
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
       line-height: 1;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(247, 245, 239, 0.78);
-      animation-delay: 0.15s;
     }
 
     .hero h1 {
-      max-width: 900px;
-      margin-bottom: 24px;
+      max-width: 920px;
+
+      margin-bottom: 25px;
+
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(52px, 8.5vw, 110px);
+      font-size: clamp(54px, 8.5vw, 112px);
       font-weight: 400;
-      line-height: 0.88;
-      letter-spacing: -0.035em;
+      line-height: .88;
+      letter-spacing: -.035em;
+
       text-wrap: balance;
-      animation-delay: 0.3s;
+
+      opacity: 0;
+      transform: translateY(18px);
+
+      animation:
+        textReveal 1.15s .27s cubic-bezier(.22,1,.36,1) forwards;
+    }
+
+    /*
+      Tiny editorial accent.
+      One italic word gives the title that old-book feeling.
+    */
+
+    .hero h1 em {
+      font-family: "Bodoni Moda", serif;
+      font-size: .78em;
+      font-weight: 400;
+      letter-spacing: -.025em;
     }
 
     .hero-subtitle {
       max-width: 470px;
+
       margin-bottom: 34px;
+
       font-size: 14px;
-      line-height: 1.7;
-      letter-spacing: 0.015em;
-      color: rgba(247, 245, 239, 0.82);
-      animation-delay: 0.45s;
+      line-height: 1.72;
+      letter-spacing: .01em;
+
+      color: rgba(242,238,229,.79);
+
+      opacity: 0;
+      transform: translateY(15px);
+
+      animation:
+        textReveal .95s .43s cubic-bezier(.22,1,.36,1) forwards;
     }
 
-    /* =========================
-       BUTTON
-    ========================= */
+    /* =========================================
+       ANIMATED BUTTON
+    ========================================= */
 
     .hero-button {
       position: relative;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
 
-      min-width: 178px;
-      padding: 15px 25px;
+      min-width: 182px;
+      padding: 16px 25px;
 
-      border: 1px solid rgba(247, 245, 239, 0.7);
+      border: 1px solid rgba(242,238,229,.7);
       border-radius: 999px;
-
-      background: rgba(20, 28, 23, 0.18);
-      color: var(--cream);
-
-      font-family: "Inter", sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.19em;
-      line-height: 1;
-      text-transform: uppercase;
 
       overflow: hidden;
       isolation: isolate;
 
-      transition:
-        color 0.45s ease,
-        border-color 0.45s ease,
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      color: var(--cream);
 
-      animation-delay: 0.6s;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+
+      opacity: 0;
+      transform: translateY(15px);
+
+      animation:
+        textReveal .95s .59s cubic-bezier(.22,1,.36,1) forwards;
+
+      transition:
+        color .55s ease,
+        border-color .55s ease,
+        transform .5s cubic-bezier(.22,1,.36,1);
     }
+
+    /*
+      The button has an actual moving light sweep.
+      It runs continuously — subtle enough to feel premium.
+    */
 
     .hero-button::before {
       content: "";
+
+      position: absolute;
+      z-index: -2;
+
+      top: 0;
+      bottom: 0;
+      left: -65%;
+
+      width: 55%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(242,238,229,.18),
+          transparent
+        );
+
+      transform: skewX(-18deg);
+
+      animation: buttonSweep 4.2s 1.7s ease-in-out infinite;
+    }
+
+    /*
+      Hover fill.
+    */
+
+    .hero-button::after {
+      content: "";
+
       position: absolute;
       z-index: -1;
       inset: 0;
 
       background: var(--cream);
 
-      transform: translateX(-102%);
+      transform: translateX(-101%);
+
       transition:
-        transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        transform .6s cubic-bezier(.77,0,.18,1);
     }
 
-    .hero-button > span {
+    .hero-button span {
       position: relative;
-      z-index: 1;
-    }
-
-    .hero-button:hover {
-      color: var(--ink);
-      border-color: var(--cream);
-      transform: translateY(-2px);
-    }
-
-    .hero-button:hover::before {
-      transform: translateX(0);
+      z-index: 2;
     }
 
     .hero-button .arrow {
+      display: inline-block;
+
+      font-size: 15px;
+      line-height: 0;
+
       transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        transform .55s cubic-bezier(.22,1,.36,1);
+    }
+
+    .hero-button:hover {
+      color: var(--forest);
+      border-color: var(--cream);
+
+      transform: translateY(-3px);
+    }
+
+    .hero-button:hover::after {
+      transform: translateX(0);
     }
 
     .hero-button:hover .arrow {
-      transform: translateX(5px);
+      transform: translateX(6px);
     }
 
     .hero-button:active {
-      transform: translateY(0) scale(0.98);
+      transform: translateY(-1px) scale(.985);
     }
 
-    /* =========================
-       SCROLL INDICATOR
-    ========================= */
-
-    .scroll-hint {
-      position: absolute;
-      z-index: 6;
-      right: 7vw;
-      bottom: 7vw;
-
-      display: flex;
-      align-items: center;
-      gap: 13px;
-
-      color: rgba(247, 245, 239, 0.58);
-
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-
-      animation: hintFade 1s ease 1.2s both;
-    }
-
-    .scroll-hint i {
-      display: block;
-      width: 1px;
-      height: 42px;
-      background: rgba(247, 245, 239, 0.52);
-
-      transform-origin: top;
-      animation: scrollLine 2.2s ease-in-out infinite;
-    }
-
-    /* =========================
+    /* =========================================
        SECOND SCENE
-    ========================= */
+    ========================================= */
 
     .world {
       position: relative;
+
       min-height: 100svh;
+
       display: flex;
       align-items: center;
 
-      padding: 12vw 8vw 13vw;
+      padding: 12vw 8vw;
 
-      background: var(--forest);
+      background:
+        radial-gradient(
+          circle at 78% 25%,
+          rgba(93,115,88,.10),
+          transparent 32%
+        ),
+        var(--forest-deep);
+
       color: var(--cream);
     }
 
+    /*
+      Thin botanical line — almost invisible.
+    */
+
+    .world::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 8vw;
+      right: 8vw;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--line) 20%,
+          var(--line) 80%,
+          transparent
+        );
+    }
+
     .world-inner {
-      width: min(1100px, 100%);
-      margin: 0 auto;
+      width: min(1080px, 100%);
+      margin: auto;
     }
 
     .world-kicker {
-      margin-bottom: 34px;
+      margin-bottom: 28px;
 
-      font-size: 10px;
+      color: var(--green);
+
+      font-size: 9px;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: .25em;
       text-transform: uppercase;
-
-      color: rgba(247, 245, 239, 0.48);
     }
 
     .world-title {
       max-width: 900px;
 
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(48px, 7vw, 88px);
+      font-size: clamp(50px, 7.5vw, 94px);
       font-weight: 400;
-      line-height: 0.92;
-      letter-spacing: -0.035em;
+      line-height: .9;
+      letter-spacing: -.035em;
+    }
+
+    .world-title em {
+      font-family: "Bodoni Moda", serif;
+      font-size: .76em;
+      font-weight: 400;
     }
 
     .world-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.65fr);
-      gap: 8vw;
+      grid-template-columns: minmax(0, 1fr) minmax(230px, .55fr);
 
-      margin-top: 10vw;
+      gap: 9vw;
+
+      margin-top: 9vw;
     }
 
     .world-copy {
-      max-width: 580px;
+      max-width: 570px;
 
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.9;
-      color: rgba(247, 245, 239, 0.72);
+
+      color: rgba(242,238,229,.68);
     }
 
     .world-side {
@@ -352,109 +482,121 @@
 
       padding-bottom: 4px;
 
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(26px, 3vw, 40px);
-      line-height: 1.1;
-      color: rgba(247, 245, 239, 0.88);
-    }
-
-    .world-side em {
+      font-family: "Bodoni Moda", serif;
+      font-size: clamp(25px, 3vw, 39px);
       font-style: italic;
+      line-height: 1.25;
+
+      color: rgba(242,238,229,.82);
     }
 
-    /* =========================
-       SECOND-SCENE REVEAL
-    ========================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-
-      transition:
-        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    .world-side span {
+      color: var(--green);
     }
 
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .world-grid.reveal {
-      transition-delay: 0.12s;
-    }
-
-    /* =========================
+    /* =========================================
        FOOTER
-    ========================= */
+    ========================================= */
 
     .footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 30px;
 
       padding: 28px 8vw 34px;
 
-      background: var(--forest);
-      color: rgba(247, 245, 239, 0.4);
+      background: var(--forest-deep);
+
+      border-top: 1px solid rgba(242,238,229,.07);
+
+      color: rgba(242,238,229,.38);
 
       font-size: 9px;
-      letter-spacing: 0.14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
     .footer a {
-      transition: color 0.3s ease;
+      transition: color .3s ease;
     }
 
     .footer a:hover {
       color: var(--cream);
     }
 
-    /* =========================
+    /* =========================================
        ANIMATIONS
-    ========================= */
+    ========================================= */
 
-    @keyframes heroReveal {
+    @keyframes imageAppear {
+      from {
+        opacity: 0;
+        transform: scale(1.015);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes textReveal {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @keyframes scrollLine {
-      0%,
-      100% {
-        opacity: 0.35;
-        transform: scaleY(0.25);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
-
-    @keyframes hintFade {
-      from {
-        opacity: 0;
-      }
-
+    @keyframes softReveal {
       to {
         opacity: 1;
       }
     }
 
-    /* =========================
+    @keyframes starBreath {
+      0%, 100% {
+        opacity: .45;
+        transform: scale(.9);
+      }
+
+      50% {
+        opacity: .95;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes buttonSweep {
+      0% {
+        left: -65%;
+      }
+
+      22% {
+        left: 120%;
+      }
+
+      100% {
+        left: 120%;
+      }
+    }
+
+    /* =========================================
        MOBILE
-    ========================= */
+    ========================================= */
 
     @media (max-width: 700px) {
-      .hero-photo {
+
+      .hero-image {
+        /*
+          Keep the entire photograph visible.
+          Width controls the mobile composition.
+        */
         height: 100%;
         width: auto;
         max-width: none;
+      }
+
+      .hero-image-wrap {
+        justify-content: center;
       }
 
       .hero-content {
@@ -462,33 +604,32 @@
         padding-bottom: 58px;
       }
 
+      .botanical-mark {
+        top: 27px;
+        right: 24px;
+
+        font-size: 10px;
+      }
+
       .eyebrow {
-        margin-bottom: 16px;
         font-size: 9px;
+        letter-spacing: .2em;
       }
 
       .hero h1 {
         max-width: 100%;
-        margin-bottom: 20px;
-        font-size: clamp(48px, 15vw, 76px);
-        line-height: 0.9;
+
+        font-size: clamp(49px, 14.8vw, 76px);
+        line-height: .89;
       }
 
       .hero-subtitle {
         max-width: 330px;
-        margin-bottom: 28px;
         font-size: 13px;
-        line-height: 1.65;
       }
 
       .hero-button {
-        min-width: 165px;
-        padding: 14px 21px;
-      }
-
-      .scroll-hint {
-        right: 24px;
-        bottom: 25px;
+        min-width: 170px;
       }
 
       .world {
@@ -496,12 +637,13 @@
         padding: 100px 24px 90px;
       }
 
-      .world-kicker {
-        margin-bottom: 25px;
+      .world::before {
+        left: 24px;
+        right: 24px;
       }
 
       .world-title {
-        font-size: clamp(46px, 14vw, 68px);
+        font-size: clamp(47px, 14vw, 70px);
       }
 
       .world-grid {
@@ -511,42 +653,21 @@
       }
 
       .world-copy {
-        font-size: 14px;
-        line-height: 1.8;
-      }
-
-      .world-side {
-        font-size: 30px;
+        font-size: 13.5px;
       }
 
       .footer {
         padding: 25px 24px 30px;
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
 
-    /* =========================
-       REDUCED MOTION
-    ========================= */
-
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .hero-content > *,
-      .reveal {
-        opacity: 1;
-        transform: none;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -554,22 +675,25 @@
 
 <body>
 
-  <!-- =========================
-       SCENE 01 — HERO
-  ========================= -->
-
   <main>
 
-    <section class="hero" id="top">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-      <img
-        class="hero-photo"
-        src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
-        alt=""
-        aria-hidden="true"
-      />
+    <section class="hero">
 
-      <div class="hero-transition"></div>
+      <div class="hero-image-wrap">
+        <img
+          class="hero-image"
+          src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
+          alt=""
+        >
+      </div>
+
+      <div class="botanical-mark">
+        made of instinct
+      </div>
 
       <div class="hero-content">
 
@@ -578,7 +702,8 @@
         </div>
 
         <h1>
-          Erotic without losing the woman behind it.
+          Erotic without losing the
+          <em>woman</em> behind it.
         </h1>
 
         <p class="hero-subtitle">
@@ -598,45 +723,42 @@
 
       </div>
 
-      <div class="scroll-hint" aria-hidden="true">
-        <span>Scroll</span>
-        <i></i>
-      </div>
-
     </section>
 
 
     <!-- =========================
-         SCENE 02 — WORLD
-    ========================= -->
+         SECOND SCENE
+    ========================== -->
 
-    <section class="world" id="world">
+    <section class="world">
 
       <div class="world-inner">
 
-        <div class="world-kicker reveal">
-          A world of my own
+        <div class="world-kicker">
+          ✦ A different kind of intimacy
         </div>
 
-        <h2 class="world-title reveal">
-          Softness can have structure.
+        <h2 class="world-title">
+          Wanting has a
+          <em>structure.</em>
         </h2>
 
-        <div class="world-grid reveal">
+        <div class="world-grid">
 
           <p class="world-copy">
-            I am interested in the space between beauty and desire,
-            between intimacy and distance, between instinct and intention.
+            I am drawn to the space where instinct meets intention —
+            where sensuality can be intelligent, intimate and entirely
+            its own.
             <br><br>
             Nothing here is mass-produced.
-            I prefer slow things, real things, and experiences
-            that feel like they belong to two people rather than an audience.
+            Every experience begins with attention, curiosity and the
+            freedom to let things unfold at their own pace.
           </p>
 
           <div class="world-side">
-            <em>Nature.</em><br>
-            Mathematics.<br>
-            Eros.
+            Nature feeds me.<br>
+            Mathematics <span>grounds me.</span><br>
+            Desire moves between them.
           </div>
 
         </div>
@@ -648,11 +770,8 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
   <footer class="footer">
+
     <span>Green Witch</span>
 
     <a
@@ -662,56 +781,8 @@
     >
       OnlyFans →
     </a>
+
   </footer>
-
-
-  <script>
-    /* =========================
-       SCROLL REVEAL
-    ========================= */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.18
-      }
-    );
-
-    revealElements.forEach((element) => {
-      observer.observe(element);
-    });
-
-
-    /* =========================
-       HIDE SCROLL HINT AFTER SCROLL
-    ========================= */
-
-    const scrollHint = document.querySelector(".scroll-hint");
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (window.scrollY > 80) {
-          scrollHint.style.opacity = "0";
-          scrollHint.style.pointerEvents = "none";
-          scrollHint.style.transition = "opacity 0.5s ease";
-        } else {
-          scrollHint.style.opacity = "";
-          scrollHint.style.pointerEvents = "";
-        }
-      },
-      { passive: true }
-    );
-  </script>
 
 </body>
 </html>
