@@ -89,16 +89,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
   100% { transform:translate(calc(var(--dx) * 1.7),-108svh) scale(1.8) rotate(-5deg); opacity:0 }
 }
 /* ---------- Victorian atmosphere ---------- */
-/* 1. engraved frame that draws itself around the hero, then corner stars appear */
-.frame { position:absolute; z-index:7; inset:14px; pointer-events:none; }
-.frame i { position:absolute; background:rgba(242,238,229,.32); }
-.frame .t { top:0; left:0; right:0; height:1px; transform-origin:left;   transform:scaleX(0); animation:drawX 1.5s .9s  cubic-bezier(.65,0,.25,1) forwards; }
-.frame .r { top:0; right:0; bottom:0; width:1px; transform-origin:top;   transform:scaleY(0); animation:drawY 1.5s 2.2s cubic-bezier(.65,0,.25,1) forwards; }
-.frame .b { bottom:0; left:0; right:0; height:1px; transform-origin:right; transform:scaleX(0); animation:drawX 1.5s 3.5s cubic-bezier(.65,0,.25,1) forwards; }
-.frame .l { top:0; left:0; bottom:0; width:1px; transform-origin:bottom; transform:scaleY(0); animation:drawY 1.5s 4.8s cubic-bezier(.65,0,.25,1) forwards; }
-.frame b { position:absolute; font:400 11px/1 "Cormorant Garamond",serif; color:var(--green); opacity:0; animation:softReveal 1.6s 6.2s ease forwards; }
-.frame .c1 { top:7px; left:7px; } .frame .c2 { top:7px; right:7px; } .frame .c3 { bottom:7px; right:7px; } .frame .c4 { bottom:7px; left:7px; }
-/* 2. candle behind the frame: warm light that wavers, never blinks */
+/* 2. candle behind the camera: warm light that wavers, never blinks */
 .candle { position:absolute; top:0; bottom:0; left:-30%; right:-30%; z-index:2; pointer-events:none; mix-blend-mode:screen; opacity:.5;
   background:radial-gradient(ellipse 34% 42% at 50% 78%,rgba(255,172,96,.26),rgba(255,150,80,.08) 55%,transparent 75%);
   animation:candleWalk 20s ease-in-out infinite alternate, candle 7s ease-in-out infinite; }
@@ -111,8 +102,6 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 /* 5. reveal on scroll: focus pulls in like a lens, no bounce */
 .js .rv { opacity:0; transform:translateY(18px); filter:blur(5px); transition:opacity 1.3s cubic-bezier(.22,1,.36,1),transform 1.3s cubic-bezier(.22,1,.36,1),filter 1.3s ease; transition-delay:var(--rd,0s); }
 .js .rv.in { opacity:1; transform:none; filter:none; }
-@keyframes drawX { to{transform:scaleX(1)} }
-@keyframes drawY { to{transform:scaleY(1)} }
 @keyframes candle { 0%,100%{opacity:.45} 18%{opacity:.62} 31%{opacity:.5} 52%{opacity:.7} 67%{opacity:.48} 84%{opacity:.6} }
 @keyframes lightBreath { 0%,100%{filter:brightness(.8) saturate(.95)} 20%{filter:brightness(1) saturate(1.02)} 38%{filter:brightness(.88) saturate(.98)} 60%{filter:brightness(1.12) saturate(1.06)} 82%{filter:brightness(.86) saturate(.96)} }
 @keyframes candleWalk { from{transform:translateX(-14%)} to{transform:translateX(14%)} }
@@ -124,18 +113,20 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 .menu-kicker { margin-bottom:26px; color:var(--green); font-size:9px; font-weight:400; letter-spacing:.25em; text-transform:uppercase; }
 .menu-intro { max-width:640px; margin-bottom:8vw; font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3.6vw,46px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
 .menu-intro em { font-style:italic; font-weight:500; }
+.menu-lead { max-width:480px; margin:-4vw 0 8vw; font-size:14px; line-height:1.9; color:rgba(242,238,229,.7); }
 .menu-item { display:grid; grid-template-columns:56px minmax(170px,.55fr) 1fr; gap:24px; align-items:baseline; padding:26px 0 28px; border-top:1px solid var(--line); }
 .menu-item:last-of-type { border-bottom:1px solid var(--line); }
 .menu-num { color:var(--green); font-family:"Cormorant Garamond",serif; font-size:15px; font-style:italic; letter-spacing:.08em; }
 .menu-name { font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3vw,38px); font-style:italic; font-weight:500; line-height:1; }
 .menu-text { max-width:480px; font-size:14px; line-height:1.8; color:rgba(242,238,229,.7); }
+.menu-sub { max-width:520px; margin:-4vw 0 8vw; font-size:14px; line-height:1.8; color:rgba(242,238,229,.66); }
 .menu-close { margin-top:8vw; font-family:"Cormorant Garamond",serif; font-size:clamp(30px,3.6vw,48px); line-height:1.05; letter-spacing:-.02em; }
 .menu-link { display:inline-flex; align-items:center; gap:11px; margin-top:28px; padding-bottom:5px; border-bottom:1px solid rgba(242,238,229,.5); font-family:"Inter",sans-serif; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,238,229,.92); transition:opacity .3s ease,gap .3s ease; }
 .menu-link:hover { opacity:.65; gap:15px; }
 @media (max-width:700px) {
   .menu { padding:100px 24px 90px; } .menu::before { left:24px; right:24px; }
-  .menu-intro { margin-bottom:56px; }
-  .menu-item { grid-template-columns:34px 1fr; gap:6px 12px; padding:22px 0 24px; }
+  .menu-intro { margin-bottom:28px; } .menu-sub { margin:0 0 56px; font-size:13.5px; }
+  .menu-lead { margin:-24px 0 48px; font-size:13.5px; } .menu-item { grid-template-columns:34px 1fr; gap:6px 12px; padding:22px 0 24px; }
   .menu-text { grid-column:2; font-size:13.5px; }
   .menu-close { margin-top:60px; }
 }
@@ -148,7 +139,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 @media (max-width:700px) {
   /* small shift left so the mask isn't clipped by the right edge; 0vw = previous framing */
   .hero-image { --shift:8vw; height:100%; width:auto; max-width:none; }
-  .hero-content { padding:24px 24px 58px; } .frame { inset:11px; }
+  .hero-content { padding:24px 24px 58px; }
   .botanical-mark { top:calc(27px + env(safe-area-inset-top,0px)); left:24px; font-size:10px; }
   .eyebrow { font-size:9px; letter-spacing:.2em; }
   .hero h1 { max-width:100%; font-size:clamp(49px,14.8vw,76px); line-height:.89; }
@@ -161,7 +152,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
   .world-copy { font-size:13.5px; }
   .footer { padding:25px 24px calc(30px + env(safe-area-inset-bottom,0px)); }
 }
-@media (prefers-reduced-motion:reduce) { .smoke { display:none; }  .js .rv { opacity:1 !important; transform:none !important; filter:none !important; } .frame i { transform:none !important; }   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+@media (prefers-reduced-motion:reduce) { .smoke { display:none; }  .js .rv { opacity:1 !important; transform:none !important; filter:none !important; }   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
 </style>
 </head>
 <body>
@@ -172,7 +163,6 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
     </div>
     <div class="candle"></div>
     <div class="smoke" aria-hidden="true"><i style="--x:4%;--w:46vw;--d:22s;--l:-2s;--dx:60px;--o:0.9"></i><i style="--x:18%;--w:38vw;--d:27s;--l:-11s;--dx:90px;--o:0.7"></i><i style="--x:30%;--w:50vw;--d:24s;--l:-6s;--dx:70px;--o:1"></i><i style="--x:8%;--w:34vw;--d:30s;--l:-17s;--dx:110px;--o:0.6"></i><i style="--x:42%;--w:42vw;--d:26s;--l:-14s;--dx:50px;--o:0.75"></i><i style="--x:24%;--w:44vw;--d:21s;--l:-9s;--dx:100px;--o:0.8"></i></div>
-    <div class="frame" aria-hidden="true"><i class="t"></i><i class="r"></i><i class="b"></i><i class="l"></i><b class="c1">✦</b><b class="c2">✦</b><b class="c3">✦</b><b class="c4">✦</b></div>
     <div class="botanical-mark">made of instinct</div>
     <div class="hero-content">
       <div class="eyebrow">Green Witch · Sensual Artist</div>
@@ -194,7 +184,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
       <div class="world-kicker rv" style="--rd:.15s">✦ A different kind of intimacy</div>
       <h2 class="world-title rv" style="--rd:.3s">Wanting has a <em>structure.</em></h2>
       <div class="world-grid">
-        <p class="world-copy rv" style="--rd:.5s">I don’t want to give you everything at once.<br><br>I want to give you something to anticipate. Something to imagine. Something to come back for.</p>
+        <p class="world-copy rv" style="--rd:.5s">I don’t think desire is something to hide. I think it’s a source of life, beauty and closeness — and most of us were simply never taught to see it that way.</p>
         <div class="world-side rv" style="--rd:.75s">Desire has patterns.<br>I just happen to enjoy <span>finding them.</span></div>
       </div>
     </div>
@@ -204,6 +194,8 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
     <div class="menu-inner">
       <div class="menu-kicker rv">✦ Ways to stay</div>
       <p class="menu-intro rv" style="--rd:.15s">If you’re here, you’re not just getting something to watch. You’re stepping into my world — <em>slow, sensual, personal,</em> and always leaving something to discover.</p>
+      <p class="menu-sub rv" style="--rd:.25s">I don’t want to give you everything at once.<br>I want to give you something to anticipate. Something to imagine. Something to come back for.</p>
+      <p class="menu-lead rv" style="--rd:.25s">I don’t want to give you everything at once.<br><br>I want to give you something to anticipate. Something to imagine. Something to come back for.</p>
       <div class="menu-item rv" style="--rd:0.00s"><div class="menu-num">I</div><div class="menu-name">The Tease</div><p class="menu-text">Slow play. Movement, eye contact, tension, anticipation.</p></div>
       <div class="menu-item rv" style="--rd:0.08s"><div class="menu-num">II</div><div class="menu-name">The Ritual</div><p class="menu-text">Water, oil, fabric, light, voice — sensory experiences from my Green Witch world.</p></div>
       <div class="menu-item rv" style="--rd:0.16s"><div class="menu-num">III</div><div class="menu-name">The Private Fantasy</div><p class="menu-text">Your idea, turned into something that feels like me — within my aesthetic and my boundaries.</p></div>
