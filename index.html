@@ -78,9 +78,9 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 
 /* ---------- smoke: thin wisps rising from the candle side, drifting right ---------- */
 .smoke { position:absolute; inset:0; z-index:3; overflow:hidden; pointer-events:none; mix-blend-mode:screen; }
-.smoke i { position:absolute; bottom:-20svh; left:var(--x); width:var(--w); height:62svh; opacity:0; will-change:transform,opacity;
-  background:radial-gradient(ellipse 38% 46% at 42% 55%,rgba(222,232,222,.17),transparent 72%),
-             radial-gradient(ellipse 30% 30% at 62% 25%,rgba(222,232,222,.12),transparent 70%);
+.smoke i { position:absolute; bottom:-20svh; left:var(--x); width:var(--w); height:70svh; opacity:0; will-change:transform,opacity;
+  background:radial-gradient(ellipse 40% 48% at 42% 55%,rgba(150,176,196,.34),rgba(120,148,170,.12) 55%,transparent 74%),
+             radial-gradient(ellipse 32% 32% at 62% 25%,rgba(150,176,196,.26),transparent 72%);
   animation:smokeRise var(--d) var(--l) ease-in-out infinite; }
 @keyframes smokeRise {
   0%   { transform:translate(0,0) scale(.55) rotate(-7deg); opacity:0 }
@@ -91,7 +91,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 /* ---------- Victorian atmosphere ---------- */
 /* 2. candle behind the camera: warm light that wavers, never blinks */
 .candle { position:absolute; top:0; bottom:0; left:-30%; right:-30%; z-index:2; pointer-events:none; mix-blend-mode:screen; opacity:.5;
-  background:radial-gradient(ellipse 34% 42% at 50% 78%,rgba(255,172,96,.26),rgba(255,150,80,.08) 55%,transparent 75%);
+  background:radial-gradient(ellipse 34% 38% at 36% 80%,rgba(255,176,104,.14),rgba(255,150,80,.035) 55%,transparent 75%);
   animation:candleWalk 20s ease-in-out infinite alternate, candle 7s ease-in-out infinite; }
 /* 3. photo slowly breathes closer */
 /* 4. moon phases in the second scene */
@@ -138,7 +138,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 
 @media (max-width:700px) {
   /* small shift left so the mask isn't clipped by the right edge; 0vw = previous framing */
-  .hero-image { --shift:8vw; height:100%; width:auto; max-width:none; }
+  .hero-image { --shift:14vw; height:100%; width:auto; max-width:none; }
   .hero-content { padding:24px 24px 58px; }
   .botanical-mark { top:calc(27px + env(safe-area-inset-top,0px)); left:24px; font-size:10px; }
   .eyebrow { font-size:9px; letter-spacing:.2em; }
@@ -162,7 +162,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
       <img class="hero-image" src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg" alt="Green Witch in a dark forest, wearing a horned mask">
     </div>
     <div class="candle"></div>
-    <div class="smoke" aria-hidden="true"><i style="--x:4%;--w:46vw;--d:22s;--l:-2s;--dx:60px;--o:0.9"></i><i style="--x:18%;--w:38vw;--d:27s;--l:-11s;--dx:90px;--o:0.7"></i><i style="--x:30%;--w:50vw;--d:24s;--l:-6s;--dx:70px;--o:1"></i><i style="--x:8%;--w:34vw;--d:30s;--l:-17s;--dx:110px;--o:0.6"></i><i style="--x:42%;--w:42vw;--d:26s;--l:-14s;--dx:50px;--o:0.75"></i><i style="--x:24%;--w:44vw;--d:21s;--l:-9s;--dx:100px;--o:0.8"></i></div>
+    <div class="smoke" aria-hidden="true"><i style="--x:2%;--w:52vw;--d:22s;--l:-2s;--dx:60px;--o:0.95"></i><i style="--x:16%;--w:44vw;--d:27s;--l:-11s;--dx:90px;--o:0.85"></i><i style="--x:30%;--w:56vw;--d:24s;--l:-6s;--dx:70px;--o:1"></i><i style="--x:6%;--w:40vw;--d:30s;--l:-17s;--dx:110px;--o:0.8"></i><i style="--x:40%;--w:48vw;--d:26s;--l:-14s;--dx:50px;--o:0.9"></i><i style="--x:22%;--w:50vw;--d:21s;--l:-9s;--dx:100px;--o:0.9"></i><i style="--x:48%;--w:42vw;--d:28s;--l:-20s;--dx:80px;--o:0.75"></i><i style="--x:12%;--w:54vw;--d:25s;--l:-4s;--dx:95px;--o:0.85"></i><i style="--x:34%;--w:46vw;--d:23s;--l:-16s;--dx:65px;--o:0.8"></i></div>
     <div class="botanical-mark">made of instinct</div>
     <div class="hero-content">
       <div class="eyebrow">Green Witch · Sensual Artist</div>
