@@ -66,9 +66,9 @@ a:focus-visible { outline: 2px solid #f7f5ef; outline-offset: 4px; }
 
 @media (max-width: 700px) {
   .hero { min-height: 100svh; height: 100svh; }
-  /* same scale as before, but the crop is anchored to the right edge,
-     where the mask and horn are. Tune --nudge (e.g. 4vw) to shift more. */
-  .hero-photo { --nudge: 0vw; height: 100%; width: auto; left: auto; right: 0; top: 0; transform: translateX(var(--nudge)); }
+  /* original centering, plus a small shift so the mask stays in frame.
+     --shift: bigger = figure moves further left. 0vw = original. */
+  .hero-photo { --shift: 22vw; height: 100%; width: auto; left: 50%; top: 50%; transform: translate(calc(-50% - var(--shift)), -50%); }
   .hero-content { padding: 10vw 7vw 9vw; }
   .hero h1 { max-width: 370px; font-size: clamp(49px, 14vw, 68px); }
   .hero-subtitle { max-width: 330px; font-size: 14px; }
