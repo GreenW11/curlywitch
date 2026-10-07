@@ -1,788 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Green Witch — Erotic Artist</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --forest: #111914;
-      --forest-deep: #0c120e;
-      --cream: #f2eee5;
-      --cream-soft: rgba(242, 238, 229, .72);
-      --green: #899b82;
-      --line: rgba(242, 238, 229, .18);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--forest-deep);
-      color: var(--cream);
-      font-family: "Inter", sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================================
-       HERO
-    ========================================= */
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      overflow: hidden;
-      background: var(--forest-deep);
-      isolation: isolate;
-    }
-
-    /*
-      The image is NOT background-size: cover.
-      It remains proportional, so the face isn't cropped.
-    */
-
-    .hero-image-wrap {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background: var(--forest-deep);
-    }
-
-    .hero-image {
-      display: block;
-
-      width: auto;
-      height: 100%;
-      max-width: none;
-
-      object-fit: contain;
-
-      user-select: none;
-      pointer-events: none;
-
-      animation: imageAppear 1.5s cubic-bezier(.22,1,.36,1) both;
-    }
-
-    /*
-      Dark edge treatment.
-      This doesn't crop the photograph.
-    */
-
-    .hero-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(12,18,14,.55) 0%,
-          rgba(12,18,14,0) 23%,
-          rgba(12,18,14,0) 77%,
-          rgba(12,18,14,.55) 100%
-        ),
-        linear-gradient(
-          to top,
-          rgba(12,18,14,.94) 0%,
-          rgba(12,18,14,.30) 23%,
-          rgba(12,18,14,.03) 58%,
-          transparent 100%
-        );
-    }
-
-    /* =========================================
-       GREEN WITCH MICRO DETAIL
-    ========================================= */
-
-    .botanical-mark {
-      position: absolute;
-      z-index: 5;
-      top: 7vw;
-      right: 7vw;
-
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      color: rgba(242,238,229,.62);
-
-      font-family: "Bodoni Moda", serif;
-      font-size: 12px;
-      font-style: italic;
-      letter-spacing: .05em;
-
-      opacity: 0;
-      animation: softReveal 1.2s .8s ease forwards;
-    }
-
-    .botanical-mark::before {
-      content: "✦";
-      color: var(--green);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 13px;
-      animation: starBreath 3.5s ease-in-out infinite;
-    }
-
-    /* =========================================
-       HERO CONTENT
-    ========================================= */
-
-    .hero-content {
-      position: relative;
-      z-index: 6;
-
-      min-height: 100svh;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-
-      padding: 8vw;
-      padding-bottom: 9vw;
-
-      color: var(--cream);
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      margin-bottom: 21px;
-
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-
-      color: rgba(242,238,229,.78);
-
-      opacity: 0;
-      transform: translateY(14px);
-
-      animation:
-        textReveal .9s .15s cubic-bezier(.22,1,.36,1) forwards;
-    }
-
-    .eyebrow::before {
-      content: "✦";
-
-      color: var(--green);
-
-      font-family: "Cormorant Garamond", serif;
-      font-size: 12px;
-      line-height: 1;
-    }
-
-    .hero h1 {
-      max-width: 920px;
-
-      margin-bottom: 25px;
-
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(54px, 8.5vw, 112px);
-      font-weight: 400;
-      line-height: .88;
-      letter-spacing: -.035em;
-
-      text-wrap: balance;
-
-      opacity: 0;
-      transform: translateY(18px);
-
-      animation:
-        textReveal 1.15s .27s cubic-bezier(.22,1,.36,1) forwards;
-    }
-
-    /*
-      Tiny editorial accent.
-      One italic word gives the title that old-book feeling.
-    */
-
-    .hero h1 em {
-      font-family: "Bodoni Moda", serif;
-      font-size: .78em;
-      font-weight: 400;
-      letter-spacing: -.025em;
-    }
-
-    .hero-subtitle {
-      max-width: 470px;
-
-      margin-bottom: 34px;
-
-      font-size: 14px;
-      line-height: 1.72;
-      letter-spacing: .01em;
-
-      color: rgba(242,238,229,.79);
-
-      opacity: 0;
-      transform: translateY(15px);
-
-      animation:
-        textReveal .95s .43s cubic-bezier(.22,1,.36,1) forwards;
-    }
-
-    /* =========================================
-       ANIMATED BUTTON
-    ========================================= */
-
-    .hero-button {
-      position: relative;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-
-      min-width: 182px;
-      padding: 16px 25px;
-
-      border: 1px solid rgba(242,238,229,.7);
-      border-radius: 999px;
-
-      overflow: hidden;
-      isolation: isolate;
-
-      color: var(--cream);
-
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: .19em;
-      text-transform: uppercase;
-
-      opacity: 0;
-      transform: translateY(15px);
-
-      animation:
-        textReveal .95s .59s cubic-bezier(.22,1,.36,1) forwards;
-
-      transition:
-        color .55s ease,
-        border-color .55s ease,
-        transform .5s cubic-bezier(.22,1,.36,1);
-    }
-
-    /*
-      The button has an actual moving light sweep.
-      It runs continuously — subtle enough to feel premium.
-    */
-
-    .hero-button::before {
-      content: "";
-
-      position: absolute;
-      z-index: -2;
-
-      top: 0;
-      bottom: 0;
-      left: -65%;
-
-      width: 55%;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(242,238,229,.18),
-          transparent
-        );
-
-      transform: skewX(-18deg);
-
-      animation: buttonSweep 4.2s 1.7s ease-in-out infinite;
-    }
-
-    /*
-      Hover fill.
-    */
-
-    .hero-button::after {
-      content: "";
-
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-
-      background: var(--cream);
-
-      transform: translateX(-101%);
-
-      transition:
-        transform .6s cubic-bezier(.77,0,.18,1);
-    }
-
-    .hero-button span {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-button .arrow {
-      display: inline-block;
-
-      font-size: 15px;
-      line-height: 0;
-
-      transition:
-        transform .55s cubic-bezier(.22,1,.36,1);
-    }
-
-    .hero-button:hover {
-      color: var(--forest);
-      border-color: var(--cream);
-
-      transform: translateY(-3px);
-    }
-
-    .hero-button:hover::after {
-      transform: translateX(0);
-    }
-
-    .hero-button:hover .arrow {
-      transform: translateX(6px);
-    }
-
-    .hero-button:active {
-      transform: translateY(-1px) scale(.985);
-    }
-
-    /* =========================================
-       SECOND SCENE
-    ========================================= */
-
-    .world {
-      position: relative;
-
-      min-height: 100svh;
-
-      display: flex;
-      align-items: center;
-
-      padding: 12vw 8vw;
-
-      background:
-        radial-gradient(
-          circle at 78% 25%,
-          rgba(93,115,88,.10),
-          transparent 32%
-        ),
-        var(--forest-deep);
-
-      color: var(--cream);
-    }
-
-    /*
-      Thin botanical line — almost invisible.
-    */
-
-    .world::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: 8vw;
-      right: 8vw;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--line) 20%,
-          var(--line) 80%,
-          transparent
-        );
-    }
-
-    .world-inner {
-      width: min(1080px, 100%);
-      margin: auto;
-    }
-
-    .world-kicker {
-      margin-bottom: 28px;
-
-      color: var(--green);
-
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-    }
-
-    .world-title {
-      max-width: 900px;
-
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(50px, 7.5vw, 94px);
-      font-weight: 400;
-      line-height: .9;
-      letter-spacing: -.035em;
-    }
-
-    .world-title em {
-      font-family: "Bodoni Moda", serif;
-      font-size: .76em;
-      font-weight: 400;
-    }
-
-    .world-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(230px, .55fr);
-
-      gap: 9vw;
-
-      margin-top: 9vw;
-    }
-
-    .world-copy {
-      max-width: 570px;
-
-      font-size: 14px;
-      line-height: 1.9;
-
-      color: rgba(242,238,229,.68);
-    }
-
-    .world-side {
-      align-self: end;
-
-      padding-bottom: 4px;
-
-      font-family: "Bodoni Moda", serif;
-      font-size: clamp(25px, 3vw, 39px);
-      font-style: italic;
-      line-height: 1.25;
-
-      color: rgba(242,238,229,.82);
-    }
-
-    .world-side span {
-      color: var(--green);
-    }
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding: 28px 8vw 34px;
-
-      background: var(--forest-deep);
-
-      border-top: 1px solid rgba(242,238,229,.07);
-
-      color: rgba(242,238,229,.38);
-
-      font-size: 9px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .footer a {
-      transition: color .3s ease;
-    }
-
-    .footer a:hover {
-      color: var(--cream);
-    }
-
-    /* =========================================
-       ANIMATIONS
-    ========================================= */
-
-    @keyframes imageAppear {
-      from {
-        opacity: 0;
-        transform: scale(1.015);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes textReveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes softReveal {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes starBreath {
-      0%, 100% {
-        opacity: .45;
-        transform: scale(.9);
-      }
-
-      50% {
-        opacity: .95;
-        transform: scale(1.08);
-      }
-    }
-
-    @keyframes buttonSweep {
-      0% {
-        left: -65%;
-      }
-
-      22% {
-        left: 120%;
-      }
-
-      100% {
-        left: 120%;
-      }
-    }
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media (max-width: 700px) {
-
-      .hero-image {
-        /*
-          Keep the entire photograph visible.
-          Width controls the mobile composition.
-        */
-        height: 100%;
-        width: auto;
-        max-width: none;
-      }
-
-      .hero-image-wrap {
-        justify-content: center;
-      }
-
-      .hero-content {
-        padding: 24px;
-        padding-bottom: 58px;
-      }
-
-      .botanical-mark {
-        top: 27px;
-        right: 24px;
-
-        font-size: 10px;
-      }
-
-      .eyebrow {
-        font-size: 9px;
-        letter-spacing: .2em;
-      }
-
-      .hero h1 {
-        max-width: 100%;
-
-        font-size: clamp(49px, 14.8vw, 76px);
-        line-height: .89;
-      }
-
-      .hero-subtitle {
-        max-width: 330px;
-        font-size: 13px;
-      }
-
-      .hero-button {
-        min-width: 170px;
-      }
-
-      .world {
-        min-height: auto;
-        padding: 100px 24px 90px;
-      }
-
-      .world::before {
-        left: 24px;
-        right: 24px;
-      }
-
-      .world-title {
-        font-size: clamp(47px, 14vw, 70px);
-      }
-
-      .world-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        margin-top: 70px;
-      }
-
-      .world-copy {
-        font-size: 13.5px;
-      }
-
-      .footer {
-        padding: 25px 24px 30px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Green Witch — Sensual Artist</title>
+<meta name="description" content="Green Witch. Sensual artist. Slow, personal, and always leaving something to discover.">
+<link rel="canonical" href="https://curlywitch.art/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌿%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://curlywitch.art/">
+<meta property="og:title" content="Green Witch — Sensual Artist">
+<meta property="og:description" content="I give you space to want.">
+<meta property="og:image" content="https://curlywitch.art/1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://curlywitch.art/1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+:root { --forest:#111914; --forest-deep:#0c120e; --cream:#f2eee5; --cream-soft:rgba(242,238,229,.72); --green:#899b82; --line:rgba(242,238,229,.18); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--forest-deep); color:var(--cream); font-family:"Inter",sans-serif; font-weight:300; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
+
+.hero { position:relative; min-height:100svh; overflow:hidden; background:var(--forest-deep); isolation:isolate; }
+.hero-image-wrap { position:absolute; z-index:1; inset:0; display:flex; justify-content:center; align-items:center; overflow:hidden; background:var(--forest-deep); }
+.hero-image { --shift:0vw; display:block; position:relative; left:calc(-1 * var(--shift)); width:auto; height:100%; max-width:none; object-fit:contain; user-select:none; pointer-events:none; animation:imageAppear 1.5s cubic-bezier(.22,1,.36,1) both, lightBreath 12s 1.5s ease-in-out infinite; }
+.hero-image-wrap::after { content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(90deg,rgba(12,18,14,.55) 0%,rgba(12,18,14,0) 23%,rgba(12,18,14,0) 77%,rgba(12,18,14,.55) 100%),
+             linear-gradient(to top,rgba(12,18,14,.94) 0%,rgba(12,18,14,.30) 23%,rgba(12,18,14,.03) 58%,transparent 100%); }
+
+/* moved to the top-left: on the right it ran straight through the horn */
+.botanical-mark { position:absolute; z-index:5; top:7vw; left:7vw; display:flex; align-items:center; gap:11px; color:rgba(242,238,229,.62);
+  font-family:"Cormorant Garamond",serif; font-size:15px; font-style:italic; letter-spacing:.05em; opacity:0; animation:softReveal 1.2s .8s ease forwards; }
+.botanical-mark::before { content:"✦"; color:var(--green); font-family:"Cormorant Garamond",serif; font-size:13px; animation:starBreath 3.5s ease-in-out infinite; }
+
+.hero-content { position:relative; z-index:6; min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; padding:8vw 8vw 9vw; color:var(--cream); }
+.eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:21px; font-size:10px; font-weight:400; letter-spacing:.22em; text-transform:uppercase; color:rgba(242,238,229,.85);
+  text-shadow:0 1px 10px rgba(8,13,10,.75); opacity:0; transform:translateY(14px); animation:textReveal .9s .15s cubic-bezier(.22,1,.36,1) forwards; }
+.eyebrow::before { content:"✦"; color:var(--green); font-family:"Cormorant Garamond",serif; font-size:12px; line-height:1; }
+.hero h1 { max-width:920px; margin-bottom:25px; font-family:"Cormorant Garamond",serif; font-size:clamp(54px,8.5vw,112px); font-weight:400; line-height:.88; letter-spacing:-.035em; text-wrap:balance;
+  text-shadow:0 2px 24px rgba(8,13,10,.55); opacity:0; transform:translateY(18px); animation:textReveal 1.15s .27s cubic-bezier(.22,1,.36,1) forwards; }
+/* accent word: same family, italic, with a slow green glow */
+.hero h1 em, .world-title em { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1em; font-weight:500; letter-spacing:-.02em; }
+.hero-subtitle { max-width:470px; margin-bottom:34px; font-size:14px; line-height:1.72; letter-spacing:.01em; color:rgba(242,238,229,.86);
+  text-shadow:0 1px 12px rgba(8,13,10,.7); opacity:0; transform:translateY(15px); animation:textReveal .95s .43s cubic-bezier(.22,1,.36,1) forwards; }
+
+.hero-button { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:14px; min-width:182px; padding:16px 25px; border:1px solid rgba(242,238,229,.7); border-radius:999px; overflow:hidden; isolation:isolate; color:var(--cream);
+  font-size:10px; font-weight:400; letter-spacing:.19em; text-transform:uppercase; opacity:0; transform:translateY(15px);
+  animation:textReveal .95s .59s cubic-bezier(.22,1,.36,1) forwards; transition:color .55s ease,border-color .55s ease,transform .5s cubic-bezier(.22,1,.36,1); }
+.hero-button::before { content:""; position:absolute; z-index:-2; top:0; bottom:0; left:-65%; width:55%; background:linear-gradient(90deg,transparent,rgba(242,238,229,.18),transparent); transform:skewX(-18deg); animation:buttonSweep 4.2s 1.7s ease-in-out infinite; }
+.hero-button::after { content:""; position:absolute; z-index:-1; inset:0; background:var(--cream); transform:translateX(-101%); transition:transform .6s cubic-bezier(.77,0,.18,1); }
+.hero-button span { position:relative; z-index:2; }
+.hero-button .arrow { display:inline-block; font-size:15px; line-height:0; transition:transform .55s cubic-bezier(.22,1,.36,1); }
+.hero-button:hover { color:var(--forest); border-color:var(--cream); transform:translateY(-3px); }
+.hero-button:hover::after { transform:translateX(0); }
+.hero-button:hover .arrow { transform:translateX(6px); }
+.hero-button:active { transform:translateY(-1px) scale(.985); }
+
+.world { position:relative; min-height:100svh; display:flex; align-items:center; padding:12vw 8vw; background:radial-gradient(circle at 78% 25%,rgba(93,115,88,.10),transparent 32%),var(--forest-deep); color:var(--cream); }
+.world::before { content:""; position:absolute; top:0; left:8vw; right:8vw; height:1px; background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent); }
+.world-inner { width:min(1080px,100%); margin:auto; }
+.world-kicker { margin-bottom:28px; color:var(--green); font-size:9px; font-weight:400; letter-spacing:.25em; text-transform:uppercase; }
+.world-title { max-width:900px; font-family:"Cormorant Garamond",serif; font-size:clamp(50px,7.5vw,94px); font-weight:400; line-height:.9; letter-spacing:-.035em; }
+.world-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(230px,.55fr); gap:9vw; margin-top:9vw; }
+.world-copy { max-width:570px; font-size:14px; line-height:1.9; color:rgba(242,238,229,.68); }
+.world-side { align-self:end; padding-bottom:4px; font-family:"Cormorant Garamond",serif; font-size:clamp(27px,3.3vw,43px); font-style:italic; font-weight:500; line-height:1.25; color:rgba(242,238,229,.82); }
+.world-side span { color:#a3b59b; }
+
+.footer { display:flex; justify-content:space-between; align-items:center; padding:28px 8vw calc(34px + env(safe-area-inset-bottom,0px)); background:var(--forest-deep); border-top:1px solid rgba(242,238,229,.07); color:rgba(242,238,229,.5); font-size:9px; letter-spacing:.16em; text-transform:uppercase; }
+.footer a { transition:color .3s ease; }
+.footer a:hover { color:var(--cream); }
+
+
+/* ---------- smoke: thin wisps rising from the candle side, drifting right ---------- */
+.smoke { position:absolute; inset:0; z-index:3; overflow:hidden; pointer-events:none; mix-blend-mode:screen; }
+.smoke i { position:absolute; bottom:-20svh; left:var(--x); width:var(--w); height:62svh; opacity:0; will-change:transform,opacity;
+  background:radial-gradient(ellipse 38% 46% at 42% 55%,rgba(222,232,222,.17),transparent 72%),
+             radial-gradient(ellipse 30% 30% at 62% 25%,rgba(222,232,222,.12),transparent 70%);
+  animation:smokeRise var(--d) var(--l) ease-in-out infinite; }
+@keyframes smokeRise {
+  0%   { transform:translate(0,0) scale(.55) rotate(-7deg); opacity:0 }
+  16%  { opacity:var(--o) }
+  58%  { transform:translate(var(--dx),-52svh) scale(1.15) rotate(7deg) }
+  100% { transform:translate(calc(var(--dx) * 1.7),-108svh) scale(1.8) rotate(-5deg); opacity:0 }
+}
+/* ---------- Victorian atmosphere ---------- */
+/* 1. engraved frame that draws itself around the hero, then corner stars appear */
+.frame { position:absolute; z-index:7; inset:14px; pointer-events:none; }
+.frame i { position:absolute; background:rgba(242,238,229,.32); }
+.frame .t { top:0; left:0; right:0; height:1px; transform-origin:left;   transform:scaleX(0); animation:drawX 1.5s .9s  cubic-bezier(.65,0,.25,1) forwards; }
+.frame .r { top:0; right:0; bottom:0; width:1px; transform-origin:top;   transform:scaleY(0); animation:drawY 1.5s 2.2s cubic-bezier(.65,0,.25,1) forwards; }
+.frame .b { bottom:0; left:0; right:0; height:1px; transform-origin:right; transform:scaleX(0); animation:drawX 1.5s 3.5s cubic-bezier(.65,0,.25,1) forwards; }
+.frame .l { top:0; left:0; bottom:0; width:1px; transform-origin:bottom; transform:scaleY(0); animation:drawY 1.5s 4.8s cubic-bezier(.65,0,.25,1) forwards; }
+.frame b { position:absolute; font:400 11px/1 "Cormorant Garamond",serif; color:var(--green); opacity:0; animation:softReveal 1.6s 6.2s ease forwards; }
+.frame .c1 { top:7px; left:7px; } .frame .c2 { top:7px; right:7px; } .frame .c3 { bottom:7px; right:7px; } .frame .c4 { bottom:7px; left:7px; }
+/* 2. candle behind the frame: warm light that wavers, never blinks */
+.candle { position:absolute; top:0; bottom:0; left:-30%; right:-30%; z-index:2; pointer-events:none; mix-blend-mode:screen; opacity:.5;
+  background:radial-gradient(ellipse 34% 42% at 50% 78%,rgba(255,172,96,.26),rgba(255,150,80,.08) 55%,transparent 75%);
+  animation:candleWalk 20s ease-in-out infinite alternate, candle 7s ease-in-out infinite; }
+/* 3. photo slowly breathes closer */
+/* 4. moon phases in the second scene */
+.moons { display:flex; gap:16px; margin-bottom:30px; }
+.moons svg { width:16px; height:16px; overflow:visible; }
+.moons circle { fill:none; stroke:rgba(242,238,229,.4); stroke-width:.8; }
+.moons path, .moons .full { fill:var(--cream); opacity:.18; animation:moonLit 10s ease-in-out infinite; animation-delay:calc(var(--i) * 1.4s); }
+/* 5. reveal on scroll: focus pulls in like a lens, no bounce */
+.js .rv { opacity:0; transform:translateY(18px); filter:blur(5px); transition:opacity 1.3s cubic-bezier(.22,1,.36,1),transform 1.3s cubic-bezier(.22,1,.36,1),filter 1.3s ease; transition-delay:var(--rd,0s); }
+.js .rv.in { opacity:1; transform:none; filter:none; }
+@keyframes drawX { to{transform:scaleX(1)} }
+@keyframes drawY { to{transform:scaleY(1)} }
+@keyframes candle { 0%,100%{opacity:.45} 18%{opacity:.62} 31%{opacity:.5} 52%{opacity:.7} 67%{opacity:.48} 84%{opacity:.6} }
+@keyframes lightBreath { 0%,100%{filter:brightness(.8) saturate(.95)} 20%{filter:brightness(1) saturate(1.02)} 38%{filter:brightness(.88) saturate(.98)} 60%{filter:brightness(1.12) saturate(1.06)} 82%{filter:brightness(.86) saturate(.96)} }
+@keyframes candleWalk { from{transform:translateX(-14%)} to{transform:translateX(14%)} }
+@keyframes moonLit { 0%,100%{opacity:.18} 18%,34%{opacity:.95} 55%{opacity:.18} }
+/* ---------- third scene: the six ways in ---------- */
+.menu { position:relative; padding:12vw 8vw; background:radial-gradient(circle at 15% 80%,rgba(93,115,88,.08),transparent 34%),var(--forest-deep); color:var(--cream); }
+.menu::before { content:""; position:absolute; top:0; left:8vw; right:8vw; height:1px; background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent); }
+.menu-inner { width:min(1080px,100%); margin:0 auto; }
+.menu-kicker { margin-bottom:26px; color:var(--green); font-size:9px; font-weight:400; letter-spacing:.25em; text-transform:uppercase; }
+.menu-intro { max-width:640px; margin-bottom:8vw; font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3.6vw,46px); font-weight:400; line-height:1.08; letter-spacing:-.02em; }
+.menu-intro em { font-style:italic; font-weight:500; }
+.menu-item { display:grid; grid-template-columns:56px minmax(170px,.55fr) 1fr; gap:24px; align-items:baseline; padding:26px 0 28px; border-top:1px solid var(--line); }
+.menu-item:last-of-type { border-bottom:1px solid var(--line); }
+.menu-num { color:var(--green); font-family:"Cormorant Garamond",serif; font-size:15px; font-style:italic; letter-spacing:.08em; }
+.menu-name { font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3vw,38px); font-style:italic; font-weight:500; line-height:1; }
+.menu-text { max-width:480px; font-size:14px; line-height:1.8; color:rgba(242,238,229,.7); }
+.menu-close { margin-top:8vw; font-family:"Cormorant Garamond",serif; font-size:clamp(30px,3.6vw,48px); line-height:1.05; letter-spacing:-.02em; }
+.menu-link { display:inline-flex; align-items:center; gap:11px; margin-top:28px; padding-bottom:5px; border-bottom:1px solid rgba(242,238,229,.5); font-family:"Inter",sans-serif; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,238,229,.92); transition:opacity .3s ease,gap .3s ease; }
+.menu-link:hover { opacity:.65; gap:15px; }
+@media (max-width:700px) {
+  .menu { padding:100px 24px 90px; } .menu::before { left:24px; right:24px; }
+  .menu-intro { margin-bottom:56px; }
+  .menu-item { grid-template-columns:34px 1fr; gap:6px 12px; padding:22px 0 24px; }
+  .menu-text { grid-column:2; font-size:13.5px; }
+  .menu-close { margin-top:60px; }
+}
+@keyframes imageAppear { from{opacity:0;transform:scale(1.015)} to{opacity:1;transform:scale(1)} }
+@keyframes textReveal { to{opacity:1;transform:translateY(0)} }
+@keyframes softReveal { to{opacity:1} }
+@keyframes starBreath { 0%,100%{opacity:.45;transform:scale(.9)} 50%{opacity:.95;transform:scale(1.08)} }
+@keyframes buttonSweep { 0%{left:-65%} 22%{left:120%} 100%{left:120%} }
+
+@media (max-width:700px) {
+  /* small shift left so the mask isn't clipped by the right edge; 0vw = previous framing */
+  .hero-image { --shift:8vw; height:100%; width:auto; max-width:none; }
+  .hero-content { padding:24px 24px 58px; } .frame { inset:11px; }
+  .botanical-mark { top:calc(27px + env(safe-area-inset-top,0px)); left:24px; font-size:10px; }
+  .eyebrow { font-size:9px; letter-spacing:.2em; }
+  .hero h1 { max-width:100%; font-size:clamp(49px,14.8vw,76px); line-height:.89; }
+  .hero-subtitle { max-width:330px; font-size:13px; }
+  .hero-button { min-width:170px; }
+  .world { min-height:auto; padding:100px 24px 90px; }
+  .world::before { left:24px; right:24px; }
+  .world-title { font-size:clamp(47px,14vw,70px); }
+  .world-grid { grid-template-columns:1fr; gap:48px; margin-top:70px; }
+  .world-copy { font-size:13.5px; }
+  .footer { padding:25px 24px calc(30px + env(safe-area-inset-bottom,0px)); }
+}
+@media (prefers-reduced-motion:reduce) { .smoke { display:none; }  .js .rv { opacity:1 !important; transform:none !important; filter:none !important; } .frame i { transform:none !important; }   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+</style>
 </head>
-
 <body>
+<main>
+  <section class="hero">
+    <div class="hero-image-wrap">
+      <img class="hero-image" src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg" alt="Green Witch in a dark forest, wearing a horned mask">
+    </div>
+    <div class="candle"></div>
+    <div class="smoke" aria-hidden="true"><i style="--x:4%;--w:46vw;--d:22s;--l:-2s;--dx:60px;--o:0.9"></i><i style="--x:18%;--w:38vw;--d:27s;--l:-11s;--dx:90px;--o:0.7"></i><i style="--x:30%;--w:50vw;--d:24s;--l:-6s;--dx:70px;--o:1"></i><i style="--x:8%;--w:34vw;--d:30s;--l:-17s;--dx:110px;--o:0.6"></i><i style="--x:42%;--w:42vw;--d:26s;--l:-14s;--dx:50px;--o:0.75"></i><i style="--x:24%;--w:44vw;--d:21s;--l:-9s;--dx:100px;--o:0.8"></i></div>
+    <div class="frame" aria-hidden="true"><i class="t"></i><i class="r"></i><i class="b"></i><i class="l"></i><b class="c1">✦</b><b class="c2">✦</b><b class="c3">✦</b><b class="c4">✦</b></div>
+    <div class="botanical-mark">made of instinct</div>
+    <div class="hero-content">
+      <div class="eyebrow">Green Witch · Sensual Artist</div>
+      <h1>I give you space to <em>want.</em></h1>
+      <p class="hero-subtitle">Slow. Sensual. Personal. I don’t believe desire needs to be exhausted to be satisfied.</p>
+      <a class="hero-button" href="https://onlyfans.com/curly.witch/c3" target="_blank" rel="noopener noreferrer"><span>Come closer</span><span class="arrow">→</span></a>
+    </div>
+  </section>
 
-  <main>
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section class="hero">
-
-      <div class="hero-image-wrap">
-        <img
-          class="hero-image"
-          src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg"
-          alt=""
-        >
+  <section class="world">
+    <div class="world-inner">
+      <div class="moons rv" aria-hidden="true">
+        <svg viewBox="0 0 24 24" style="--i:0"><circle cx="12" cy="12" r="6"/></svg>
+        <svg viewBox="0 0 24 24" style="--i:1"><circle cx="12" cy="12" r="6"/><path d="M12 6A6 6 0 0 1 12 18A3 6 0 0 0 12 6Z"/></svg>
+        <svg viewBox="0 0 24 24" style="--i:2"><circle cx="12" cy="12" r="6"/><path d="M12 6A6 6 0 0 1 12 18Z"/></svg>
+        <svg viewBox="0 0 24 24" style="--i:3"><circle cx="12" cy="12" r="6"/><path d="M12 6A6 6 0 0 1 12 18A3 6 0 0 1 12 6Z"/></svg>
+        <svg viewBox="0 0 24 24" style="--i:4"><circle cx="12" cy="12" r="6"/><circle class="full" cx="12" cy="12" r="6"/></svg>
       </div>
-
-      <div class="botanical-mark">
-        made of instinct
+      <div class="world-kicker rv" style="--rd:.15s">✦ A different kind of intimacy</div>
+      <h2 class="world-title rv" style="--rd:.3s">Wanting has a <em>structure.</em></h2>
+      <div class="world-grid">
+        <p class="world-copy rv" style="--rd:.5s">I don’t want to give you everything at once.<br><br>I want to give you something to anticipate. Something to imagine. Something to come back for.</p>
+        <div class="world-side rv" style="--rd:.75s">Desire has patterns.<br>I just happen to enjoy <span>finding them.</span></div>
       </div>
+    </div>
+  </section>
 
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          Green Witch · Erotic Artist
-        </div>
-
-        <h1>
-          Erotic without losing the
-          <em>woman</em> behind it.
-        </h1>
-
-        <p class="hero-subtitle">
-          Master of Mathematics. Erotic artist.
-          Nature feeds me. I turn it into desire.
-        </p>
-
-        <a
-          class="hero-button"
-          href="https://onlyfans.com/curly.witch/c3"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>Come closer</span>
-          <span class="arrow">→</span>
-        </a>
-
+  <section class="menu">
+    <div class="menu-inner">
+      <div class="menu-kicker rv">✦ Ways to stay</div>
+      <p class="menu-intro rv" style="--rd:.15s">If you’re here, you’re not just getting something to watch. You’re stepping into my world — <em>slow, sensual, personal,</em> and always leaving something to discover.</p>
+      <div class="menu-item rv" style="--rd:0.00s"><div class="menu-num">I</div><div class="menu-name">The Tease</div><p class="menu-text">Slow play. Movement, eye contact, tension, anticipation.</p></div>
+      <div class="menu-item rv" style="--rd:0.08s"><div class="menu-num">II</div><div class="menu-name">The Ritual</div><p class="menu-text">Water, oil, fabric, light, voice — sensory experiences from my Green Witch world.</p></div>
+      <div class="menu-item rv" style="--rd:0.16s"><div class="menu-num">III</div><div class="menu-name">The Private Fantasy</div><p class="menu-text">Your idea, turned into something that feels like me — within my aesthetic and my boundaries.</p></div>
+      <div class="menu-item rv" style="--rd:0.24s"><div class="menu-num">IV</div><div class="menu-name">The Game</div><p class="menu-text">You don’t just watch. You participate. Choices, dares, questions, dice, little challenges.</p></div>
+      <div class="menu-item rv" style="--rd:0.32s"><div class="menu-num">V</div><div class="menu-name">The Pause</div><p class="menu-text">Just you and me, while everyone else is on pause. A private conversation and my undivided attention.</p></div>
+      <div class="menu-item rv" style="--rd:0.40s"><div class="menu-num">VI</div><div class="menu-name">The Voice</div><p class="menu-text">Stories, thoughts, whispers, Ukrainian words — sometimes with subtitles, always with a little piece of my world.</p></div>
+      <div class="menu-close rv">I give you space to want.<br>
+        <a class="menu-link" href="https://onlyfans.com/curly.witch/c3" target="_blank" rel="noopener noreferrer">Come closer →</a>
       </div>
+    </div>
+  </section>
+</main>
 
-    </section>
-
-
-    <!-- =========================
-         SECOND SCENE
-    ========================== -->
-
-    <section class="world">
-
-      <div class="world-inner">
-
-        <div class="world-kicker">
-          ✦ A different kind of intimacy
-        </div>
-
-        <h2 class="world-title">
-          Wanting has a
-          <em>structure.</em>
-        </h2>
-
-        <div class="world-grid">
-
-          <p class="world-copy">
-            I am drawn to the space where instinct meets intention —
-            where sensuality can be intelligent, intimate and entirely
-            its own.
-            <br><br>
-            Nothing here is mass-produced.
-            Every experience begins with attention, curiosity and the
-            freedom to let things unfold at their own pace.
-          </p>
-
-          <div class="world-side">
-            Nature feeds me.<br>
-            Mathematics <span>grounds me.</span><br>
-            Desire moves between them.
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer class="footer">
-
-    <span>Green Witch</span>
-
-    <a
-      href="https://onlyfans.com/curly.witch/c3"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      OnlyFans →
-    </a>
-
-  </footer>
-
+<footer class="footer">
+  <span>Green Witch</span>
+  <a href="https://onlyfans.com/curly.witch/c3" target="_blank" rel="noopener noreferrer">OnlyFans →</a>
+</footer>
+<script>
+  // reveal each block once, when it enters the viewport
+  (function () {
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (list) {
+      list.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+    }, { threshold: .2 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 </body>
 </html>
