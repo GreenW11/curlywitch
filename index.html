@@ -77,7 +77,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
 
 
 /* ---------- smoke: thin wisps rising from the candle side, drifting right ---------- */
-.smoke { position:absolute; inset:0; z-index:3; overflow:hidden; pointer-events:none; mix-blend-mode:screen; }
+.smoke { position:absolute; inset:0; z-index:3; overflow:hidden; pointer-events:none; mix-blend-mode:screen; -webkit-mask-image:linear-gradient(to right,#000 0,#000 26%,transparent 46%),linear-gradient(to bottom,#000 0,#000 22%,transparent 40%); mask-image:linear-gradient(to right,#000 0,#000 26%,transparent 46%),linear-gradient(to bottom,#000 0,#000 22%,transparent 40%); -webkit-mask-size:100% 100%,64% 100%; mask-size:100% 100%,64% 100%; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:left top; mask-position:left top; }
 .smoke i { position:absolute; bottom:-20svh; left:var(--x); width:var(--w); height:70svh; opacity:0; will-change:transform,opacity;
   background:radial-gradient(ellipse 40% 48% at 42% 55%,rgba(150,176,196,.34),rgba(120,148,170,.12) 55%,transparent 74%),
              radial-gradient(ellipse 32% 32% at 62% 25%,rgba(150,176,196,.26),transparent 72%);
@@ -130,6 +130,20 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
   .menu-text { grid-column:2; font-size:13.5px; }
   .menu-close { margin-top:60px; }
 }
+/* ---------- subscribers' words: swipe through, no autoplay ---------- */
+.voices { position:relative; padding:13vw 0; background:radial-gradient(circle at 50% 0%,rgba(93,115,88,.07),transparent 45%),var(--forest-deep); text-align:center; overflow:hidden; }
+.voices::before { content:""; position:absolute; top:0; left:8vw; right:8vw; height:1px; background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent); }
+.voices-mark { margin-bottom:34px; color:var(--green); font-family:"Cormorant Garamond",serif; font-size:14px; }
+.voices-stage { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+.voices-stage::-webkit-scrollbar { display:none; }
+.q { flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 8vw; }
+.q p { max-width:780px; font-family:"Cormorant Garamond",serif; font-size:clamp(30px,4.4vw,56px); font-style:italic; font-weight:400; line-height:1.1; letter-spacing:-.015em; text-wrap:balance; }
+.q cite { margin-top:26px; font-style:normal; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(242,238,229,.5); }
+.voices-nav { display:flex; justify-content:center; align-items:center; gap:22px; margin-top:44px; }
+.voices-nav button { width:48px; height:48px; border:1px solid rgba(242,238,229,.3); border-radius:50%; background:none; color:var(--cream); font-family:"Cormorant Garamond",serif; font-size:20px; line-height:1; cursor:pointer; transition:background .3s ease,color .3s ease,border-color .3s ease; }
+.voices-nav button:hover { background:var(--cream); color:var(--forest); border-color:var(--cream); }
+.voices-count { min-width:64px; color:rgba(242,238,229,.6); font-family:"Cormorant Garamond",serif; font-size:17px; font-style:italic; letter-spacing:.08em; }
+@media (max-width:700px) { .voices { padding:100px 0 90px; } .voices::before { left:24px; right:24px; } .q { padding:0 24px; } .q p { font-size:clamp(30px,8.6vw,40px); } }
 @keyframes imageAppear { from{opacity:0;transform:scale(1.015)} to{opacity:1;transform:scale(1)} }
 @keyframes textReveal { to{opacity:1;transform:translateY(0)} }
 @keyframes softReveal { to{opacity:1} }
@@ -162,7 +176,7 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
       <img class="hero-image" src="1BA817D5-9DBF-4A67-B558-2E33E4E92D82.jpeg" alt="Green Witch in a dark forest, wearing a horned mask">
     </div>
     <div class="candle"></div>
-    <div class="smoke" aria-hidden="true"><i style="--x:2%;--w:52vw;--d:22s;--l:-2s;--dx:60px;--o:0.95"></i><i style="--x:16%;--w:44vw;--d:27s;--l:-11s;--dx:90px;--o:0.85"></i><i style="--x:30%;--w:56vw;--d:24s;--l:-6s;--dx:70px;--o:1"></i><i style="--x:6%;--w:40vw;--d:30s;--l:-17s;--dx:110px;--o:0.8"></i><i style="--x:40%;--w:48vw;--d:26s;--l:-14s;--dx:50px;--o:0.9"></i><i style="--x:22%;--w:50vw;--d:21s;--l:-9s;--dx:100px;--o:0.9"></i><i style="--x:48%;--w:42vw;--d:28s;--l:-20s;--dx:80px;--o:0.75"></i><i style="--x:12%;--w:54vw;--d:25s;--l:-4s;--dx:95px;--o:0.85"></i><i style="--x:34%;--w:46vw;--d:23s;--l:-16s;--dx:65px;--o:0.8"></i></div>
+    <div class="smoke" aria-hidden="true"><i style="--x:-6%;--w:42vw;--d:22s;--l:-2s;--dx:24px;--o:0.95"></i><i style="--x:4%;--w:38vw;--d:27s;--l:-11s;--dx:-18px;--o:0.85"></i><i style="--x:12%;--w:44vw;--d:24s;--l:-6s;--dx:20px;--o:1"></i><i style="--x:-2%;--w:36vw;--d:30s;--l:-17s;--dx:30px;--o:0.8"></i><i style="--x:18%;--w:40vw;--d:26s;--l:-14s;--dx:-10px;--o:0.9"></i><i style="--x:8%;--w:46vw;--d:21s;--l:-9s;--dx:26px;--o:0.9"></i><i style="--x:22%;--w:38vw;--d:28s;--l:-20s;--dx:14px;--o:0.75"></i><i style="--x:0%;--w:42vw;--d:25s;--l:-4s;--dx:-24px;--o:0.85"></i><i style="--x:14%;--w:36vw;--d:23s;--l:-16s;--dx:18px;--o:0.8"></i></div>
     <div class="botanical-mark">made of instinct</div>
     <div class="hero-content">
       <div class="eyebrow">Green Witch · Sensual Artist</div>
@@ -187,6 +201,25 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
         <p class="world-copy rv" style="--rd:.5s">I don’t think desire is something to hide. I think it’s a source of life, beauty and closeness — and most of us were simply never taught to see it that way.</p>
         <div class="world-side rv" style="--rd:.75s">Desire has patterns.<br>I just happen to enjoy <span>finding them.</span></div>
       </div>
+    </div>
+  </section>
+
+  <section class="voices" aria-label="What subscribers say">
+    <div class="voices-mark rv">✦</div>
+    <div class="voices-stage rv" style="--rd:.15s" id="voices">
+      <figure class="q"><p>“The intentionality is palpable.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“Every show has a sense of presence, as if it’s only for me.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“You don’t just rush through content to get it over with; you actually take the time to build a mood.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“With you, your personality doesn’t feel performative—you feel like a real person.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“I go crazy for women who combine beauty and mind.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“Your figure is truly unique—such a feminine balance of proportions. It drew me in at first sight, but I’ve stayed for years because of your personality.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“I’ve been with you for years and still yearn for you.”</p><cite>a subscriber</cite></figure>
+      <figure class="q"><p>“It’s the care. It’s the human side of what you do.”</p><cite>a subscriber</cite></figure>
+    </div>
+    <div class="voices-nav rv" style="--rd:.3s">
+      <button type="button" id="vprev" aria-label="Previous quote">←</button>
+      <span class="voices-count" id="vcount" aria-live="polite">1 / 8</span>
+      <button type="button" id="vnext" aria-label="Next quote">→</button>
     </div>
   </section>
 
@@ -222,6 +255,20 @@ a:focus-visible { outline:2px solid var(--cream); outline-offset:4px; }
       list.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
     }, { threshold: .2 });
     els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+<script>
+  // swipe or tap arrows; counter follows the scroll position; no autoplay
+  (function () {
+    var st = document.getElementById('voices'), c = document.getElementById('vcount');
+    if (!st) return;
+    var n = st.children.length;
+    function idx() { return Math.round(st.scrollLeft / st.clientWidth); }
+    function go(d) { var i = (idx() + d + n) % n; st.scrollTo({ left: i * st.clientWidth, behavior: 'smooth' }); }
+    st.addEventListener('scroll', function () { c.textContent = (idx() + 1) + ' / ' + n; }, { passive: true });
+    document.getElementById('vprev').addEventListener('click', function () { go(-1); });
+    document.getElementById('vnext').addEventListener('click', function () { go(1); });
+    c.textContent = '1 / ' + n;
   })();
 </script>
 </body>
